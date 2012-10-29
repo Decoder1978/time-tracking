@@ -13,14 +13,26 @@
 				Goals
 			</h1>
 		</header>
+		<div class="ui-bar ui-bar-d" style="text-align: center" >
+				<div data-role="controlgroup" data-type="horizontal">
+				<a href="#" data-role="button" data-mini="true" data-icon="arrow-l" data-iconpos="notext" style="float: left"></a>
+				<a href="#" data-role="button" data-mini="true" data-icon="grid" data-iconpos="right" ><h1>Monday, 10/8</h1></a>
+				<a href="#" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="notext" style="float: right"></a>	
+				</div>
+		</div>
+		
 		<section data-role="content">
+			
 			<div id='message'>
 			</div>
 			<ul data-role="collapsible-set" data-iconpos="right"   data-collapsed-icon='arrow-r'  data-expanded-icon='arrow-d' id='goals'>
 
 			</ul>
 			<br><hr /><br>
-			<a href="./progress.php" data-role="button" data-iconpos="right"  data-icon='arrow-r' data-theme="b"><span style='float: left'>Weekly Progress</span><span style='float:right'>Oct 1-8</span></a>
+			<a href="./progress.php" data-role="button" data-iconpos="right"  data-icon='arrow-r' data-theme="b">
+				<span style='float: left'>Weekly Progress</span>
+				<span style='float:right'>Oct 1-8</span>
+			</a>
 		</section>
 		<footer data-role="footer" class="ui-bar">
 			<span>home.php</span>
@@ -41,7 +53,7 @@
 		 	<label><input type="checkbox" value="{{completed}}" style='margin-left: -15px' />Done</label>
 		 {{else}}
 		 	<h3>
-		 		<span>0.00/{{value}} hr</span>
+		 		<span>0.0 / {{value}} hours</span>
 		 		<span style='float: right'>{{name}}</span>
 		 	</h3>
 		 	<input type='number' pattern='[0-9]*' value='{{value}}'></input>
@@ -50,7 +62,6 @@
 	</li>
 </script>
 <script>
-	var username = '<?php echo $_GET['username']; ?>';
 	var goals = null;
 	jQuery.getJSON('./assets/php/goals.php?action=get&username=' + username, function success(data) {
 		if (data.length == 0) {
@@ -64,6 +75,7 @@
 				data[i]['daily'] = true;
 				data[i]['completed'] = data[i]['value'] > 0;
 			}
+			data[i].value = parseInt(data[i].value);
 			
 			items += template(data[i]);
 			goals = data;

@@ -12,3 +12,12 @@
 <script src='http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js'></script>
 <script src='./assets/js/handlebars-1.0.rc.1.js'></script>
 <script src='./assets/js/global_scripts.js'></script>
+<script>
+	<?php 
+		if (isset($_GET['username'])) {
+			echo 'var username = "'.$_GET['username'].'";'; 
+		} else {
+			echo 'var username = "";';
+		}
+	?>
+</script>
