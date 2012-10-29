@@ -6,20 +6,23 @@
 	<?php require_once('./assets/php/includes.php'); ?>
 </head>
 <body>
-	<header data-role="header">
-		<h1>
-			Index
-		</h1>
-	</header>
-	<section data-role="content">
-			<input type="text" placeholder="Username" id="username"></input>
-			<input type="button" id="login" value="Log In"></input>
-	</section>
-	<footer data-role="footer">
-		<h1>
-			2012		
-		</h1>
-	</footer>
+	<div data-role="page">
+		<header data-role="header">
+			<h1>
+				HCI556 - FL2012
+			</h1>
+		</header>
+		<section data-role="content">
+				<input type="text" placeholder="Username" id="username"></input>
+				<input type="button" id="login" value="Log In"></input>
+				<p>Enter a username. If the username does not exist, a new user will be created.</p>
+		</section>
+		<footer data-role="footer">
+			<h1>
+				index.php		
+			</h1>
+		</footer>
+	</div>
 </body>
 <script>
 

@@ -14,7 +14,7 @@ if ( isset($_GET['action'])) {
 		$result = mysql_query("SELECT * FROM goals WHERE user='$username';");
 		$rows = array();
 		while($r = mysql_fetch_assoc($result)) {
-			$rows['goal'][] = $r;
+			$rows[] = $r;
 		}
 		print json_encode($rows);
 	} elseif ($_GET['action'] == 'update') {
