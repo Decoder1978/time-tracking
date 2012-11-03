@@ -28,29 +28,26 @@ if ( isset($_GET['action'])) {
 
 
 		} else {					//REQUESTING ALL GOALS FOR DATE
-			//TODO
-
-
-
-
-
-
+			$result = mysql_query(	
+				"SELECT records.date, records.goal_id, records.value ".
+				"FROM records, goals ".
+				"WHERE goals.id = records.goal_id ".
+				"AND user='$username' AND date='$date';"
+			);
+			$rows = array();
+			while($r = mysql_fetch_assoc($result)) {
+				$rows[] = $r;
+			}
+			print json_encode($rows);
 		}
 	} elseif ($_GET['action'] == 'update') {
-		if ($goal->id == 0) { 		//SAVE OR UPDATE A RECORD
-			//TODO
-				
-				
-				
-						
-		} else {					//UPDATE AN EXISTING RECORD
-			//TODO
-	
-	
-	
-	
-	
-		}
+							 		//SAVE OR UPDATE A RECORD
+			$goal_id = $_GET['id'];
+			$value = $_GET['value'];
+			
+			mysql_query("DELETE FROM records WHERE goal_id=$goal_id AND date='$date'; ");
+			mysql_query("INSERT INTO records (goal_id, date, value) VALUES ($goal_id, '$date', $value);");
+			echo "{success:true, id:$goal_id, value:$value, date:'$date'}";
 
 	} elseif ($_GET['action'] == 'getrange') {
 									//GIVE ALL RECORDS FOR A WEEK / MONTH / WHATEVER
