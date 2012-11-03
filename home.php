@@ -16,7 +16,7 @@
 		<div class="ui-bar ui-bar-d" style="text-align: center" >
 				<div data-role="controlgroup" data-type="horizontal">
 				<a href="#" data-role="button" data-mini="true" data-icon="arrow-l" data-iconpos="notext" style="float: left"></a>
-				<a href="#" data-role="button" data-mini="true" data-icon="grid" data-iconpos="right" ><h1>Monday, 10/8</h1></a>
+					<a href="#" data-role="button" data-mini="true" data-icon="grid" data-iconpos="right" style="padding:3px 5px 3px 0 ;"><h1>Monday 10/08</h1></a>
 				<a href="#" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="notext" style="float: right"></a>	
 				</div>
 		</div>

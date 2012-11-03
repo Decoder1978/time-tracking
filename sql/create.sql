@@ -28,7 +28,8 @@ CREATE TABLE motivations (
 CREATE TABLE records (
 	goal_id INTEGER REFERENCES goals(id),
 	date DATE,
-	value NUMERIC(5,2)
+	value NUMERIC(5,2),
+	PRIMARY KEY (goal_id, date)
 );
 
 /* INSERTIONS */
@@ -37,5 +38,5 @@ INSERT INTO goals (user, name, type, description, value, comp)
 	VALUES ('default', 'Watch less TV', 'HOURLY', 'I would like to spend less time in front of the television.', 5, '<');
 INSERT INTO goals (user, name, type, description, value, comp)
 	VALUES ('default', 'Go to the gym', 'DAILY', 'Go to the gym at least twice each week.', 2, '>');
-	INSERT INTO goals (user, name, type, description, value, comp)
+INSERT INTO goals (user, name, type, description, value, comp)
 	VALUES ('default', 'Write novel', 'HOURLY', 'Spend at least two hours a week working on my twilight fan-fiction.', 2, '>');

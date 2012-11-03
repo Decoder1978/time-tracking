@@ -44,7 +44,7 @@
 			<textarea id="description" placeholder="Goal Description"></textarea>
 			
 			<a id='addMotivation' data-role='button' data-mini='true' data-theme='e' href='#' data-icon='add' data-iconpos="right">Motivations</a>
-			<ul data-role="listview"  data-inset="true" id="motivations" data-theme="a">
+			<ul data-role="listview"  data-inset="true" id="motivations" data-theme="a" style="box-shadow:none;">
 			</ul>
 			
 			</form>
@@ -112,15 +112,29 @@
 	}
 	
 	function save() {
-		//and also save things
 		var goal = {};
+		goal['id'] = 0; //TODO THIS IS ONLY TRUE WHEN CREATING A NEW GOAL
 		goal['name'] = $('#name').val();
 		goal['description'] = $('#description').val();
 		goal['comp'] = $('#comp').val();
 		goal['value'] = $('#value').val();
 		goal['type'] = $('#type').val();
 		goal['motivations'] = motivations;
+		
+		$.ajax({
+            type: "POST",
+            url: "./assets/php/goals.php?action=update&username="+username,
+            dataType: 'json',
+            data: { json: JSON.stringify(goal) },
+             success:function(data){
+                   console.log(data);
+            }
+        });
+		
+		
+		
 		return goal;
+		
 		//window.location.replace('home.php?username=' + username);
 	}
 

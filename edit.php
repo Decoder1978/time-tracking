@@ -13,7 +13,7 @@
 			</h1>
 		</header>
 		<section data-role="content">
-			[empty page]
+			[empty page hello i'm here]
 		</section>
 		<footer data-role="footer">
 			<h1>
