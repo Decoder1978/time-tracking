@@ -11,12 +11,13 @@
 			<h1>
 				Edit
 			</h1>
+			<a href="#" onclick="add()" data-role="button" data-icon="add" class="ui-btn-right">Add</a>
 		</header>
 		<section data-role="content">
 			<ul id="goals" data-role="listview" data-inset="true" data-split-icon="delete">
 
 			</ul>
-			<br><hr><br>
+			<br>
 			<p>When you're done editing, click 'Done' below.</p>
 		</section>
 		<footer data-role="footer" class="ui-bar">
@@ -57,6 +58,10 @@
 		window.location.replace('home.php?username=' + username);
 	}
 	
+	function add() {
+		window.location.replace('goal.php?username=' + username);
+	}
+	
 	function remove(id) {
 		$.ajax({
             type: "GET",
@@ -66,6 +71,7 @@
             }
         });
 	}
+	
 
 </script>
 

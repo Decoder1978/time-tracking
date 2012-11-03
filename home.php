@@ -8,7 +8,7 @@
 <body>
 	<div data-role="page">
 		<header data-role="header">
-			<a href="index.php" data-role="button" data-icon="gear" data-iconpos="notext" rel="external"p></a>
+			<a href="index.php" data-role="button" rel="external">Log Out</a>
 			<h1>
 				Goals
 			</h1>
@@ -43,12 +43,6 @@
 	<li class='goal' data-role="collapsible" data-collapsed="true" data-mini="true">
 		
 		 {{#if daily}}
-		 	<!--<h3>
-		 		{{#if completed}}
-		 			X
-		 		{{/if}}
-		 		<span style='float: right'>{{name}}</span>
-		 	</h3>-->
 		 	<h3>
 		 	<div data-role='controlgroup' data-type='horizontal' class='goal-row'>
 		 		<label class='collapsible-input'>
@@ -67,7 +61,16 @@
 			 	</div>
 		 	</h3>
 		 {{/if}}
-		<p>{{description}}</p>
+		<h1 style='font-weight: bold; font-size: 1.2em;' >Description:</h1>
+		<ul data-role='listview' data-inset='true'>
+		<li>{{description}}</li>
+		</ul>
+		<h1 style='font-weight: bold; font-size: 1.2em;' >Motivations:</h1>
+		<ul data-role='listview' data-inset='true'>
+			{{#each motivations}}
+			<li>{{this.text}}</li>
+			{{/each}}
+		</ul>
 	</li>
 </script>
 <script>

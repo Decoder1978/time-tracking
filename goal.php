@@ -12,7 +12,7 @@
 				Edit Goal
 			</h1>
 			<a href="#" onclick='cancel()' data-role="button">Cancel</a>
-			<a href="#" onclick='save()' data-role="button">Done</a>
+			<a href="#" onclick='done()' data-role="button">Done</a>
 		</header>
 		<section data-role="content">
 			
@@ -22,18 +22,18 @@
 			
 			<div data-role="controlgroup" data-type="horizontal" width="100%">
 				<select id="comp" data-icon="">
-					<option value="<">At most</option>
-					<option value=">">At least</option>
+					<option value="<" >At most</option>
+					<option value=">" >At least</option>
 				</select>
 				<select id="value" data-icon="">
-					<option value=0>0</option>
-					<option value=1>1</option>
-					<option value=2>2</option>
-					<option value=3>3</option>
-					<option value=4>4</option>
-					<option value=5>5</option>
-					<option value=6>6</option>
-					<option value=7>7</option>
+					<option value=0 >0</option>
+					<option value=1 >1</option>
+					<option value=2 >2</option>
+					<option value=3 >3</option>
+					<option value=4 >4</option>
+					<option value=5 >5</option>
+					<option value=6 >6</option>
+					<option value=7 >7</option>
 				</select>
 				<select id="type" data-icon="">
 					<option value="DAILY">days/week</option>
@@ -68,13 +68,20 @@
 			goal = data[0];
 			$('#name').attr('value',goal.name);
 			$('#description').attr('value',goal.description);
-			/*goal['description'] = $('#description').val();
-			goal['comp'] = $('#comp').val();
-			goal['value'] = $('#value').val();
-			goal['type'] = $('#type').val();
-			goal['motivations'] = motivations;*/
-		
+			$('#value').val(parseInt(goal.value));
+			$('#type').val(goal.type);
+			$('#comp').val(goal.comp);
+			$('#value').selectmenu('refresh', true);
+			$('#type').selectmenu('refresh', true);
+			$('#comp').selectmenu('refresh', true);
+			
+			for (var i = 0; i < goal['motivations'].length; ++i) {
+				goal['motivations'][i]['id'] = availableIds.pop();
+			}
+			motivations = goal['motivations'];
+			listMotivations();
 		});
+
 	}
 	
 	<?php 
@@ -125,6 +132,8 @@
 		});
 	}
 	
+	
+	
 	$("#addMotivation").on("click", function() {
 		if (motivations.length >= 8) {
 			alert("Maximum of 8 motivations allowed.");
@@ -134,8 +143,13 @@
 		listMotivations();
 	});
 
+	function done() {
+		save();
+		window.location.replace('edit.php?username=' + username);
+	}
+
 	function cancel() {
-		window.location.replace('home.php?username=' + username);
+		window.location.replace('edit.php?username=' + username);
 	}
 	
 	function save() {
@@ -157,12 +171,7 @@
                    alert("SUCCESS");
             }
         });
-		
-		
-		
-		return goal;
-		
-		//window.location.replace('home.php?username=' + username);
+        return goal;
 	}
 	
 	function remove() {
@@ -170,7 +179,7 @@
             type: "GET",
             url: "./assets/php/goals.php?action=delete&username="+username+"&id="+id
         });
-        window.location.replace('home.php?username=' + username);
+        window.location.replace('edit.php?username=' + username);
 	}
 
 </script>
