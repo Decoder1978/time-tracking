@@ -11,8 +11,8 @@
 			<h1>
 				Edit Goal
 			</h1>
-			<a href="#" onclick='cancel()' data-role="button" data-icon="delete" data-iconpos="left">Cancel</a>
-			<a href="#" onclick='save()' data-role="button" data-icon="check" data-iconpos="right">Done</a>
+			<a href="#" onclick='cancel()' data-role="button">Cancel</a>
+			<a href="#" onclick='save()' data-role="button">Done</a>
 		</header>
 		<section data-role="content">
 			
@@ -43,9 +43,11 @@
 			
 			<textarea id="description" placeholder="Goal Description"></textarea>
 			
-			<a id='addMotivation' data-role='button' data-mini='true' data-theme='e' href='#' data-icon='add' data-iconpos="right">Motivations</a>
+			<a id='addMotivation' data-role='button' data-mini='true' data-theme='b' href='#' data-icon='add' data-iconpos="right">Motivations</a>
 			<ul data-role="listview"  data-inset="true" id="motivations" data-theme="a" style="box-shadow:none;">
 			</ul>
+			
+			<a data-role='button' data-icon='delete' data-mini='true' onclick='remove()' href='#' id='delete' data-theme='e' >Delete</a>
 			
 			</form>
 		</section>
@@ -62,6 +64,7 @@
 	
 	function loadGoal() {
 		jQuery.getJSON('./assets/php/goals.php?action=get&username=' + username+"&id="+id, function success(data) {
+			console.log("Running loadGoal()");
 			goal = data[0];
 			$('#name').attr('value',goal.name);
 			$('#description').attr('value',goal.description);
@@ -77,8 +80,10 @@
 	<?php 
 		if (isset($_GET['id'])) {
 			echo 'var id = "'.$_GET['id'].'";'; 
+			echo 'loadGoal()';
 		} else {
 			echo 'var id = "0";';
+			echo "$('#delete').remove();";
 		}
 	?>
 	
@@ -158,6 +163,14 @@
 		return goal;
 		
 		//window.location.replace('home.php?username=' + username);
+	}
+	
+	function remove() {
+		$.ajax({
+            type: "GET",
+            url: "./assets/php/goals.php?action=delete&username="+username+"&id="+id
+        });
+        window.location.replace('home.php?username=' + username);
 	}
 
 </script>
