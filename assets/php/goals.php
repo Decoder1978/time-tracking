@@ -3,6 +3,7 @@
 //TO DO NOTES ABOUT THIS PAGE
 // 1) I am not sterilizing my SQL insertions, and that is bad.
 // 2) There should probably be some more graceful error handling.
+// 3) Need to prevent user from changing type or comp after creating. This could be front-end only.
 
 
 error_reporting(E_ALL); 
@@ -17,18 +18,28 @@ mysql_select_db('hci', $link);
 if ( isset($_GET['action'])) {
 	$username = $_GET['username'];
 	if ($_GET['action'] == 'get') {
-		$result = mysql_query("SELECT * FROM goals WHERE user='$username';");
-		$rows = array();
-		while($r = mysql_fetch_assoc($result)) {
-			$rows[] = $r;
+		if ( isset($_GET['id'])) {	//REQUESTING A PARTICULAR GOAL
+			$id = $_GET['id'];
+			$result = mysql_query("SELECT * FROM goals WHERE id=$id;");
+			$rows = array();
+			while($r = mysql_fetch_assoc($result)) {
+				$rows[] = $r;
+			}
+			print json_encode($rows);
+		} else {					//REQUESTING ALL GOALS FOR USER
+			$result = mysql_query("SELECT * FROM goals WHERE user='$username';");
+			$rows = array();
+			while($r = mysql_fetch_assoc($result)) {
+				$rows[] = $r;
+			}
+			print json_encode($rows);
 		}
-		print json_encode($rows);
 	} elseif ($_GET['action'] == 'update') {
 		$json = $_POST['json'];
 		$goal = json_decode($json);
 		
 		if ($goal->id == 0) {
-			//SAVE A NEW GOAL
+									//SAVE A NEW GOAL
 			$name = $goal->name;
 			$type = $goal->type;
 			$description = $goal->description;
@@ -45,14 +56,14 @@ if ( isset($_GET['action'])) {
 			echo "{success:true, id=$goal_id}";		
 			
 		} else {
-			//UPDATE AN EXISTING GOAL
+									//UPDATE AN EXISTING GOAL
 			$id = $goal->id;
 			$name = $goal->name;
 			$type = $goal->type;
 			$description = $goal->description;
 			$value = $goal->value;
 			$comp = $goal->comp;
-			mysql_query("INSERT INTO goals (user, name, type, description, value, comp) VALUES ('$username', '$name', '$type', '$description', $value, '$comp');");
+			mysql_query("UPDATE goals SET name='$name', type='$type', description='$description', value=$value, comp='$comp' WHERE id=$id;");
 
 			mysql_query("DELETE FROM motivations WHERE goal_id=$id;");
 			for ($i = 0; $i < count($goal->motivations); ++$i) {
@@ -61,8 +72,6 @@ if ( isset($_GET['action'])) {
 			}	
 			
 			echo "{success:true, id=$goal_id}";		
-			
-			
 		}
 
 	} elseif ($_GET['action'] == 'delete') {

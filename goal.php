@@ -60,6 +60,28 @@
 	var motivations = [];
 	var availableIds = [1,2,3,4,5,6,7,8,9,10];
 	
+	function loadGoal() {
+		jQuery.getJSON('./assets/php/goals.php?action=get&username=' + username+"&id="+id, function success(data) {
+			goal = data[0];
+			$('#name').attr('value',goal.name);
+			$('#description').attr('value',goal.description);
+			/*goal['description'] = $('#description').val();
+			goal['comp'] = $('#comp').val();
+			goal['value'] = $('#value').val();
+			goal['type'] = $('#type').val();
+			goal['motivations'] = motivations;*/
+		
+		});
+	}
+	
+	<?php 
+		if (isset($_GET['id'])) {
+			echo 'var id = "'.$_GET['id'].'";'; 
+		} else {
+			echo 'var id = "0";';
+		}
+	?>
+	
 	function listMotivations() {
 		var list = "";
 		for (var i = 0; i < motivations.length; ++i) {
@@ -113,7 +135,7 @@
 	
 	function save() {
 		var goal = {};
-		goal['id'] = 0; //TODO THIS IS ONLY TRUE WHEN CREATING A NEW GOAL
+		goal['id'] = id;
 		goal['name'] = $('#name').val();
 		goal['description'] = $('#description').val();
 		goal['comp'] = $('#comp').val();
@@ -127,7 +149,7 @@
             dataType: 'json',
             data: { json: JSON.stringify(goal) },
              success:function(data){
-                   console.log(data);
+                   alert("SUCCESS");
             }
         });
 		
