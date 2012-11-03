@@ -59,7 +59,7 @@
 </body>
 <script>
 	var motivations = [];
-	var availableIds = [1,2,3,4,5,6,7,8,9,10];
+	var availableIds = [10,9,8,7,6,5,4,3,2,1];
 	
 	function loadGoal() {
 		jQuery.getJSON('./assets/php/goals.php?action=get&username=' + username+"&id="+id, function success(data) {
@@ -159,7 +159,7 @@
 		goal['comp'] = $('#comp').val();
 		goal['value'] = $('#value').val();
 		goal['type'] = $('#type').val();
-		goal['motivations'] = motivations;
+		goal['motivations'] = motivations.reverse();
 		
 		$.ajax({
             type: "POST",

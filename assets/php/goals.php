@@ -23,7 +23,7 @@ if ( isset($_GET['action'])) {
 			$result = mysql_query("SELECT * FROM goals WHERE id=$id;");
 			$rows = array();
 			while($r = mysql_fetch_assoc($result)) {
-				$result2 = mysql_query("SELECT * FROM motivations WHERE goal_id=".$r['id'].";");
+				$result2 = mysql_query("SELECT * FROM motivations WHERE goal_id=".$r['id']." ORDER BY id DESC;");
 				$motivations = array();
 				while($r2 = mysql_fetch_assoc($result2)) {
 					array_push($motivations, $r2);
@@ -36,7 +36,7 @@ if ( isset($_GET['action'])) {
 			$result = mysql_query("SELECT * FROM goals WHERE user='$username';");
 			$rows = array();
 			while($r = mysql_fetch_assoc($result)) {
-				$result2 = mysql_query("SELECT * FROM motivations WHERE goal_id=".$r['id'].";");
+				$result2 = mysql_query("SELECT * FROM motivations WHERE goal_id=".$r['id']." ORDER BY id DESC;");
 				$motivations = array();
 				while($r2 = mysql_fetch_assoc($result2)) {
 					array_push($motivations, $r2);
