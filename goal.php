@@ -9,10 +9,11 @@
 	<div data-role="page">
 		<header data-role="header">
 			<h1>
-				Edit Goal
+				Add/Edit Goal
 			</h1>
-			<a href="#" onclick='cancel()' data-role="button">Cancel</a>
-			<a href="#" onclick='done()' data-role="button">Done</a>
+			<a href="#" onclick='cancel()' data-role="button" data-icon="delete" style="float:left">Cancel</a>
+			<a href="#" onclick='done()' data-role="button" data-icon="check" style="float: right;">Done</a>
+			
 		</header>
 		<section data-role="content">
 			
@@ -51,10 +52,8 @@
 			
 			</form>
 		</section>
-		<footer data-role="footer">
-			<h1>
-				goal.php
-			</h1>
+		<footer data-role="footer" >
+			<h3>&nbsp;</h3>
 		</footer>
 	</div>
 </body>

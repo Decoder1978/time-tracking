@@ -56,7 +56,7 @@
 		 	<h3>
 		 		<div data-role='controlgroup' data-type='horizontal' class='goal-row'>
 			 		<input class="collapsible-input" type="number" pattern='[0-9]*' style="width: 50px; float: left" value='{{value}}' id='value-{{id}}'/>
-			 		<h4 style="padding: 19px 0px 0px 10px; float:left;" > / {{value}} hrs</h4>
+			 		<h4 style="padding: 19px 0px 0px 10px; float:left;" > Goal: {{value}} hrs</h4>
 			 		<h4 style="padding: 17px 0px 0px 10px; float:right; font-weight: bold; font-size: 1.3em">{{name}}</h4>
 			 	</div>
 		 	</h3>

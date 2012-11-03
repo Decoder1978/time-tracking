@@ -9,9 +9,10 @@
 	<div data-role="page">
 		<header data-role="header">
 			<h1>
-				Edit
+				Edit Goals
 			</h1>
-			<a href="#" onclick="add()" data-role="button" data-icon="add" class="ui-btn-right">Add</a>
+			<a href="#" onclick="done()" data-role="button" data-icon="check" class="ui-btn-right">Done</a>
+
 		</header>
 		<section data-role="content">
 			<ul id="goals" data-role="listview" data-inset="true" data-split-icon="delete">
@@ -21,7 +22,7 @@
 			<p>When you're done editing, click 'Done' below.</p>
 		</section>
 		<footer data-role="footer" class="ui-bar">
-			<a href="#" onclick="done()" data-role="button" data-icon="check" style="float: right">Done</a>
+			<a href="#" onclick="add()" data-role="button" data-icon="add" style="float:right;">Add</a>
 		</footer>
 	</div>
 </body>
