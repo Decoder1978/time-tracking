@@ -35,28 +35,37 @@
 			</a>
 		</section>
 		<footer data-role="footer" class="ui-bar">
-			<span>home.php</span>
-			<a href="edit.php" data-role="button" data-icon="plus" style='float: right'>Edit</a>
+			<a href="#" onclick="edit()" data-role="button" style="float: right">Edit</a>
 		</footer>
 	</div>
 </body>
 <script id='goal-template' type='text/x-handlebars-template'>
-	<li class='goal' data-role="collapsible" data-collapsed="true">
+	<li class='goal' data-role="collapsible" data-collapsed="true" data-mini="true">
 		
 		 {{#if daily}}
-		 	<h3>
+		 	<!--<h3>
 		 		{{#if completed}}
-		 			X<!-- clearly this needs to be an icon or something. -->
+		 			X
 		 		{{/if}}
 		 		<span style='float: right'>{{name}}</span>
+		 	</h3>-->
+		 	<h3>
+		 	<div data-role='controlgroup' data-type='horizontal' class='goal-row'>
+		 		<label class='collapsible-input'>
+		 			<input type="checkbox" value="checked" style='margin-left: -15px' class='collapsible-input' />
+		 			Done
+		 		</label>
+		 		<h4 style="padding: 10px 0px 0px 10px; float:right; font-weight: bold; font-size: 1.3em">{{name}}</h4>
+		 	</div>
 		 	</h3>
-		 	<label><input type="checkbox" value="{{completed}}" style='margin-left: -15px' />Done</label>
 		 {{else}}
 		 	<h3>
-		 		<span>0.0 / {{value}} hours</span>
-		 		<span style='float: right'>{{name}}</span>
+		 		<div data-role='controlgroup' data-type='horizontal' class='goal-row'>
+			 		<input class="collapsible-input" type="number" pattern='[0-9]*' style="width: 50px; float: left" value='{{value}}' id='value-{{id}}'/>
+			 		<h4 style="padding: 19px 0px 0px 10px; float:left;" > / {{value}} hrs</h4>
+			 		<h4 style="padding: 17px 0px 0px 10px; float:right; font-weight: bold; font-size: 1.3em">{{name}}</h4>
+			 	</div>
 		 	</h3>
-		 	<input type='number' pattern='[0-9]*' value='{{value}}'></input>
 		 {{/if}}
 		<p>{{description}}</p>
 	</li>
@@ -82,7 +91,13 @@
 		}
 		$("#goals").append(items);
 		$("#goals").trigger('create');
+		$('.collapsible-input').on("click", function(e) { e.stopPropagation(); });
 		$('.checkbox').on("click", function(e) { e.stopPropagation(); });
+		$('.goal-row .ui-controlgroup-controls').css('width', '100%');
 	});
+	
+	function edit() {
+		window.location.replace('edit.php?username=' + username);
+	}
 </script>
 </html>

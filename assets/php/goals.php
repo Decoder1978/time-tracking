@@ -23,6 +23,12 @@ if ( isset($_GET['action'])) {
 			$result = mysql_query("SELECT * FROM goals WHERE id=$id;");
 			$rows = array();
 			while($r = mysql_fetch_assoc($result)) {
+				$result2 = mysql_query("SELECT * FROM motivations WHERE goal_id=".$r['id'].";");
+				$motivations = array();
+				while($r2 = mysql_fetch_assoc($result2)) {
+					array_push($motivations, $r2);
+				}
+				$r['motivations'] = $motivations;
 				$rows[] = $r;
 			}
 			print json_encode($rows);
@@ -30,6 +36,12 @@ if ( isset($_GET['action'])) {
 			$result = mysql_query("SELECT * FROM goals WHERE user='$username';");
 			$rows = array();
 			while($r = mysql_fetch_assoc($result)) {
+				$result2 = mysql_query("SELECT * FROM motivations WHERE goal_id=".$r['id'].";");
+				$motivations = array();
+				while($r2 = mysql_fetch_assoc($result2)) {
+					array_push($motivations, $r2);
+				}
+				$r['motivations'] = $motivations;
 				$rows[] = $r;
 			}
 			print json_encode($rows);
@@ -76,13 +88,15 @@ if ( isset($_GET['action'])) {
 
 	} elseif ($_GET['action'] == 'delete') {
 		$id = $_GET['id'];
-		$result = mysql_query("DELETE FROM goals WHERE id=$id;");
+		mysql_query("DELETE FROM motivations WHERE goal_id=$id;");
+		mysql_query("DELETE FROM records WHERE goal_id=$id;");
+		mysql_query("DELETE FROM goals WHERE id=$id;");
 	} else {
-		echo '[error: "Invalid action."]';
+		echo '{error: "Invalid action."}';
 	}
 	
 } else {
-	echo '[error: "No action provided."]';
+	echo '{error: "No action provided."}';
 }
 
 mysql_close($link);
