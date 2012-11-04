@@ -83,7 +83,7 @@ if ( isset($_GET['action'])) {
 				mysql_query("INSERT INTO motivations (goal_id, text) VALUES ($id, '$text');");
 			}	
 			
-			echo "{success:true, id=$goal_id}";		
+			echo "{success:true, id=$id}";		
 		}
 
 	} elseif ($_GET['action'] == 'delete') {

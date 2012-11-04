@@ -143,15 +143,20 @@
 	});
 
 	function done() {
-		save();
-		window.location.replace('edit.php?username=' + username);
+		save(cancel);
 	}
 
 	function cancel() {
 		window.location.replace('edit.php?username=' + username);
 	}
 	
-	function save() {
+	function save(onComplete) {
+		if (! onComplete) {
+			onComplete = function() {
+				console.log("Save submitted.");
+			}
+		}
+	
 		var goal = {};
 		goal['id'] = id;
 		goal['name'] = $('#name').val();
@@ -166,9 +171,9 @@
             url: "./assets/php/goals.php?action=update&username="+username,
             dataType: 'json',
             data: { json: JSON.stringify(goal) },
-             success:function(data){
-                   alert("SUCCESS");
-            }
+            complete: function(jqXHR, textStatus){ 
+	            onComplete();
+	        }
         });
         return goal;
 	}
