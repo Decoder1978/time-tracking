@@ -19,7 +19,7 @@
 
 			</ul>
 			<br>
-			<p>When you're done editing, click 'Done' below.</p>
+			<p>When you're done editing, click 'Done' above.</p>
 		</section>
 		<footer data-role="footer" class="ui-bar">
 			<a href="#" onclick="add()" data-role="button" data-icon="add" style="float:right;">Add</a>
@@ -29,10 +29,12 @@
 
 <script id='goal-edit-template' type='text/x-handlebars-template'>
 	<li >
-		<!--<a href="#" data-role="button" data-inline="true" class="ui-btn-left" data-icon="delete">Delete</a>-->
-		<a href="./goal.php?username={{user}}&id={{id}}" rel="external" data-icon="arrow-r">{{name}}</a>
-		<a href="#" onclick="remove({{id}})" data-icon="delete" data-theme="e"></a>
-		<?php //<!--<a href="#" data-role="button" data-mini="true" data-inline="true" class="ui-btn-right" data-textpos="notext" data-icon="arrow-r"></a>-->?>
+		<a href="./goal.php?username={{user}}&id={{id}}" rel="external" data-role="button" data-icon="arrow-r">
+			<span>{{name}}</span><span style="float:right; color: #ccc;">Edit</span>
+		</a>
+
+		<a href="#" onclick="remove({{id}})" data-icon="delete" data-role="button" data-theme="e"></a>
+		</div>
 	</li>
 </script>
 <script>

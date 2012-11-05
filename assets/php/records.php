@@ -22,11 +22,9 @@ if ( isset($_GET['action'])) {
 	if ($_GET['action'] == 'get') {
 		if ( isset($_GET['id'])) {	//REQUESTING A PARTICULAR RECORD
 			//TODO
-
-
-
-
-
+			
+			
+			
 		} else {					//REQUESTING ALL GOALS FOR DATE
 			$result = mysql_query(	
 				"SELECT records.date, records.goal_id, records.value ".
@@ -52,6 +50,9 @@ if ( isset($_GET['action'])) {
 	} elseif ($_GET['action'] == 'getrange') {
 									//GIVE ALL RECORDS FOR A WEEK / MONTH / WHATEVER
 			//TODO
+	
+	
+	
 	
 	} else {
 		echo '{error: "Invalid action."}';
