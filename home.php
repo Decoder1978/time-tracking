@@ -45,17 +45,17 @@
 	<li class='goal' data-role="collapsible" data-collapsed="true" data-mini="true">
 		
 		 {{#if daily}}
-		 	<h3>
-		 	<div data-role='controlgroup' data-type='horizontal' class='goal-row'>	
+		 	<h3 >
+		 	<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
 	 			<fieldset>
-	 		 		<!--label for="checkbox-{{id}}" class="collapsible-input" style="float: left; width: 299px;">
-			 			<input 	type="checkbox" name="checkbox-{{id}}" data-goal-id="{{id}}" style="width: 100px"
-			 					id="value-{{id}}" class="collapsible-input record-value" />
-			 			Done
-	 		 		</label-->	
-	 		 		<div id="check-container-{{id}}"></div>		 			
+	 		 		<div id="check-container-{{id}}" style="height:42px;"></div>		 			
 			 	</fieldset>
-		 		<h4 style="padding: 10px 0px 0px 10px; float:right; font-weight: bold; font-size: 1.3em">{{name}}</h4>
+		 		<h4 style="padding: 0px 0px 0px 10px; margin-top: -20px; position: absolute; right: 0px; color: #888;" >
+			 		{{label}}
+			 	</h4>
+			 	<h4 style="padding: 0px 0px 0px 10px; margin-top: -41px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
+			 		{{name}}
+			 	</h4>
 		 	</div>
 		 	</h3>
 		 {{else}}
@@ -64,14 +64,18 @@
 			 		<input class="collapsible-input record-value" type="number" pattern='[0-9]*' 
 			 			style="width: 50px; float: left" value='0' 
 			 			id='value-{{id}}' data-goal-id='{{id}}' />
-			 		<h4 style="padding: 19px 0px 0px 10px; float:left;" > Goal: {{value}} hrs</h4>
-			 		<h4 style="padding: 17px 0px 0px 10px; float:right; font-weight: bold; font-size: 1.3em">{{name}}</h4>
+			 		<h4 style="padding: 27px 0px 0px 10px; position: absolute; right: 0px; color: #888;" >
+			 			{{label}}
+			 		</h4>
+			 		<h4 style="padding: 5px 0px 0px 10px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
+			 			{{name}}
+			 		</h4>
 			 	</div>
 		 	</h3>
 		 {{/if}}
 		{{#if daily}}
 		 		<fieldset data-role="controlgroup" id="check-item-{{id}}"  >
-			 		<label for="checkbox-{{id}}" style="width: 50px">
+			 		<label for="checkbox-{{id}}" style="width: 50px" class="collapsible-checkbox-label" data-goal-id="{{id}}">
 			 			<input type="checkbox" name="checkbox-{{id}}" id="value-{{id}}" class="collapsible-input record-value" />
 			 			&nbsp;
 			 		</label>
@@ -92,6 +96,7 @@
 <script>
 	//////////////////////////////////////////////////////////// JS VARIABLES
 	<?php
+		echo "var todaysDate = '".date("Y-m-d")."';";
 		if ( ! isset($_GET['date'])) {
 			date_default_timezone_set('CST'); 
 			echo "var date = '".date("Y-m-d")."';";
@@ -100,8 +105,8 @@
 		}
 	?>
 	
-	var goals = null;
-	var records = null;
+	var goals = [];
+	var records = [];
 	
 	//////////////////////////////////////////////////////////// AJAX CALLS TO SERVER
 	
@@ -116,7 +121,9 @@
 			for (var i = 0; i < data.length; ++i) {
 				if ( data[i]['type'] == 'DAILY' ) {
 					data[i]['daily'] = true;
-					data[i]['completed'] = data[i]['value'] > 0;
+					data[i]['label'] = "Goal: " + data[i]['comp'] + " " + data[i]['value'] + " days/week";
+				} else {
+					data[i]['label'] = "Goal: " + data[i]['comp'] + " " + data[i]['value'] + " hours/week";
 				}
 				data[i].value = parseInt(data[i].value);
 				
@@ -126,9 +133,23 @@
 			$("#goals").append(items);
 			$("#goals").trigger('create');
 			$('.collapsible-input').on("click", function(e) { e.stopPropagation(); });
-			$('.checkbox').on("click", function(e) { e.stopPropagation(); });
 			$('.goal-row .ui-controlgroup-controls').css('width', '100%');
 			$('.record-value').on('click', function(e) { updateRecord($(this)); });
+			$('.collapsible-checkbox-label').on('click', function(e) { 
+				e.stopPropagation();
+				var input = $("#value-"+$(this).data('goal-id'));
+				if ( input.attr('checked') ) {
+					input.attr("checked", false).checkboxradio("refresh");
+					input.attr("value", 0);
+				} else {
+					input.attr("checked", true).checkboxradio("refresh");
+					input.attr("value",1);
+				}
+				updateRecord($(this)); 
+			});
+			for (var i = 0; i < data.length; ++i) {
+				$("#check-item-"+data[i]['id']).appendTo("#check-container-"+data[i]['id']);
+			}
 		});
 	}
 	
@@ -140,11 +161,19 @@
 				recordMap[records[i].goal_id] = records[i].value;
 			}
 			for (var i = 0; i < goals.length; ++i) {
-				if (recordMap[goals[i].id] || recordMap[goals[i].id] == 0) {
-					$("#value-"+goals[i].id).attr("value", recordMap[goals[i].id]);
+				var input = $("#value-"+goals[i].id);
+				if ( (! recordMap[goals[i].id]) || recordMap[goals[i].id] == 0) {
+					input.attr("value", 0);
+					if (goals[i].type == "DAILY") {
+						input.attr("checked", false).checkboxradio("refresh");
+					}
 				} else {
-					$("#value-"+goals[i].id).attr("value", 0);
+					input.attr("value", recordMap[goals[i].id]);
+					if (goals[i].type == "DAILY") {
+						input.attr("checked", true).checkboxradio("refresh");
+					}
 				}
+				
 			}
 		});
 	}
