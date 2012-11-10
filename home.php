@@ -33,7 +33,7 @@
 			<br><hr /><br>
 			<a href="#" onclick="progress()" data-role="button" data-iconpos="right"  data-icon='arrow-r' data-theme="b">
 				<span style='float:left'>Show Progress</span>
-				<span style='float:right'>2012-10-21 to 2012-10-27</span>
+				<span style='float:right'></span>
 			</a>
 		</section>
 		<footer data-role="footer" class="ui-bar">
