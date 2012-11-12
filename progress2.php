@@ -31,7 +31,7 @@
 			</aside>
 
 			<article id='progress' style="overflow-x: scroll;">
-				<img src="./assets/img/progress2.png" alt="weekly progress, version 2">
+				<img src="./assets/img/progress2.png" alt="weekly progress, version 2" style="width: 800px">
 			</article>
 			
 			</article>
@@ -49,7 +49,9 @@
 
 <script>
 
-var whatever = "";
+	function done() {
+		window.location.replace('home.php?username=' + username);
+	}
 
 </script>
 

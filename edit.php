@@ -19,7 +19,9 @@
 
 			</ul>
 			<br>
-			<p>When you're done editing, click 'Done' above.</p>
+			<div id='message-container' class='ui-bar-e' style='height: 110px; width: 250px; padding: 0px 20px 0px 20px;'>
+				<h1 id='message' style="font-size: large"></h1>
+			</div>
 		</section>
 		<footer data-role="footer" class="ui-bar">
 			<a href="#" onclick="add()" data-role="button" data-icon="add" style="float:right;">Add</a>
@@ -41,9 +43,13 @@
 	var goals = null;
 	function populateList() {
 		jQuery.getJSON('./assets/php/goals.php?action=get&username=' + username, function success(data) {
+			$("#goals").html('');
 			if (data.length == 0) {
-				$("#message").html("<h3>You don't have any goals! Click 'EDIT' below to add some.</h3>");
+				$("#message").html("<br><p>Click '<b>Add</b>' below to create your first goal.</p>");
+				$("#message-container").show(200);
 				return;
+			} else {
+				$("#message").html("<br><p>When you're done editing, click 'Done' below.</p>");
 			}
 			template = Handlebars.compile($("#goal-edit-template").text());
 			goals = data;
