@@ -71,7 +71,7 @@
 		</header>
 		-->
 
-		<section data-role="content">
+		<section data-role="content" style="overflow-x: scroll;">
 			<TABLE BORDER=10 CELLSPACING=3 CELLPADDING=3 ALIGN=center>
 			<TR>
 			<TD COLSPAN="7" ALIGN=center><B>October 2012</B></TD>
