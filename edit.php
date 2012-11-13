@@ -41,6 +41,7 @@
 </script>
 <script>
 	var goals = null;
+	$("#message-container").hide();
 	function populateList() {
 		jQuery.getJSON('./assets/php/goals.php?action=get&username=' + username, function success(data) {
 			$("#goals").html('');
@@ -49,7 +50,7 @@
 				$("#message-container").show(200);
 				return;
 			} else {
-				$("#message").html("<br><p>When you're done editing, click 'Done' below.</p>");
+				 //.html("<br><p>When you're done editing, click 'Done' above.</p>");
 			}
 			template = Handlebars.compile($("#goal-edit-template").text());
 			goals = data;

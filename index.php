@@ -34,6 +34,9 @@
 	$('#username').on('keypress', function(event) {
         if (event.keyCode == 13) { submit(); }
     });
+    $('#password').on('keypress', function(event) {
+        if (event.keyCode == 13) { submit(); }
+    });
     
 </script>
 </html>
