@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div data-role="page">
-		<header data-role="header">
+		<header data-role="header" data-position="fixed">
 			<a href="index.php" data-role="button" rel="external">Log Out</a>
 			<h1>
 				Goals
@@ -25,20 +25,24 @@
 		
 		<section data-role="content">
 			
+			<a href="#" onclick="progress()" data-role="button" data-iconpos="right"  data-icon='arrow-r' data-theme="b">
+				<span style='float:left'>This Week's Progress</span>
+				<span style='float:right'></span>
+			</a>
+			
+			<br><hr /><br>
+			
 			<div id='message-container' class='ui-bar-e' style='height: 110px; width: 250px; padding: 0px 20px 0px 20px;'>
 				<h1 id='message' style="font-size: large"></h1>
 			</div>
 			<ul data-role="collapsible-set" data-iconpos="right"   data-collapsed-icon='arrow-r'  data-expanded-icon='arrow-d' id='goals'>
 
 			</ul>
-			<br><hr /><br>
-			<a href="#" onclick="progress()" data-role="button" data-iconpos="right"  data-icon='arrow-r' data-theme="b">
-				<span style='float:left'>This Week's Progress</span>
-				<span style='float:right'></span>
-			</a>
+
+
 		</section>
-		<footer data-role="footer" class="ui-bar">
-			<a href="#" onclick="edit()" data-role="button" style="float: right">Edit</a>
+		<footer data-role="footer" class="ui-bar" data-position="fixed">
+			<a href="#" onclick="edit()" data-role="button" style="float: right; margin-right:20px;">Edit</a>
 		</footer>
 	</div>
 </body>

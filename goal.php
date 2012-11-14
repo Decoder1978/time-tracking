@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div data-role="page">
-		<header data-role="header">
+		<header data-role="header" data-position="fixed">
 			<h1>
 				Add/Edit Goal
 			</h1>
@@ -52,7 +52,7 @@
 			
 			</form>
 		</section>
-		<footer data-role="footer" >
+		<footer data-role="footer" data-position="fixed" >
 			<h3>&nbsp;</h3>
 		</footer>
 	</div>
@@ -93,6 +93,15 @@
 		}
 	?>
 	
+	function getMotivation(id) {
+		for (var i = 0; i < motivations.length; ++i) {
+			if (motivations[i].id == id) {
+				return motivations[i];
+			}
+		}
+		return null;
+	}
+	
 	function listMotivations() {
 		var list = "";
 		for (var i = 0; i < motivations.length; ++i) {
@@ -118,16 +127,18 @@
 		
 		$(".delete").on('click', function() {
 			var id = $(this).data('motivation-id');
-			var i = 0;
-			for (i = 0; i < motivations.length; ++i) {
-				if (motivations[i].id == id) {
-					motivations.splice(i, 1);
-					availableIds.push(id);
-					listMotivations();
-					return;
+			var m = getMotivation(id);
+			if (m.text == "" || confirm("Are you sure you want to delete the motivation, '" + m.text + "'?") ) {
+				for (var i = 0; i < motivations.length; ++i) {
+					if (motivations[i].id == id) {
+						motivations.splice(i, 1);
+						availableIds.push(id);
+						listMotivations();
+						return;
+					}
 				}
+				alert("Could not find item " + id + " to delete it.");
 			}
-			alert("Could not find item " + id + " to delete it.");
 		});
 	}
 	

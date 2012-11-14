@@ -7,9 +7,9 @@
 </head>
 <body>
 	<div data-role="page">
-		<header data-role="header">
+		<header data-role="header" data-position="fixed">
 			<h1>
-				Weekly Progress (All Goals)
+				Weekly Progress
 			</h1>
 			<a href="#" onclick="done()" data-role="button" data-icon="check" class="ui-btn-right">Done</a>
 
@@ -39,8 +39,8 @@
 
 
 
-		<footer data-role="footer">
-			<p>Progress.php</p>
+		<footer data-role="footer" data-position="fixed" >
+			<p>&nbsp;</p>
 		</footer>
 	</div>
 </body>

@@ -31,7 +31,7 @@
 			</aside>
 
 			<article id='progress' style="overflow-x: scroll;">
-				<img src="./assets/img/progress2.png" alt="weekly progress, version 2" style="width: 800px">
+				<img src="./assets/img/progress3.png" alt="weekly progress, version 3" style="width: 800px">
 			</article>
 			
 			</article>

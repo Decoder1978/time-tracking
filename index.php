@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div data-role="page">
-		<header data-role="header">
+		<header data-role="header" data-position="fixed">
 			<h1>
 				HCI556 - FL2012
 			</h1>
@@ -18,9 +18,9 @@
 				<input type="button" id="login" value="Log In"></input>
 				<p>Enter a username. If the username does not exist, a new user will be created.</p>
 		</section>
-		<footer data-role="footer">
+		<footer data-role="footer" data-position="fixed">
 			<h1>
-				index.php		
+				&nbsp;		
 			</h1>
 		</footer>
 	</div>

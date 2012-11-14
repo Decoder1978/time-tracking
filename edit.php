@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div data-role="page">
-		<header data-role="header">
+		<header data-role="header" data-position="fixed">
 			<h1>
 				Edit Goals
 			</h1>
@@ -23,8 +23,8 @@
 				<h1 id='message' style="font-size: large"></h1>
 			</div>
 		</section>
-		<footer data-role="footer" class="ui-bar">
-			<a href="#" onclick="add()" data-role="button" data-icon="add" style="float:right;">Add</a>
+		<footer data-role="footer" class="ui-bar" data-position="fixed">
+			<a href="#" onclick="add()" data-role="button" data-icon="add" style="float:right; margin-right: 20px;">Add</a>
 		</footer>
 	</div>
 </body>
@@ -72,14 +72,24 @@
 		window.location.replace('goal.php?username=' + username);
 	}
 	
+	function getGoal(id) {
+		for (var i = 0; i < goals.length; ++i ) {
+			if (goals[i].id == id) 
+				return goals[i];
+		}
+		return null;
+	}
+	
 	function remove(id) {
-		$.ajax({
-            type: "GET",
-            url: "./assets/php/goals.php?action=delete&username="+username+"&id="+id,
-             success:function(data){
-                   populateList();
-            }
-        });
+		if (confirm("Are you sure you want to delete the goal, '" + getGoal(id).name + "'?")) {
+			$.ajax({
+            	type: "GET",
+            	url: "./assets/php/goals.php?action=delete&username="+username+"&id="+id,
+             	success:function(data){
+                 	  populateList();
+                   }
+            });
+        }
 	}
 	
 

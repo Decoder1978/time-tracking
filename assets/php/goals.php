@@ -52,9 +52,9 @@ if ( isset($_GET['action'])) {
 		
 		if ($goal->id == 0) {
 									//SAVE A NEW GOAL
-			$name = $goal->name;
-			$type = $goal->type;
-			$description = $goal->description;
+			$name = mysql_real_escape_string($goal->name);
+			$type =$goal->type;
+			$description = mysql_real_escape_string($goal->description);
 			$value = $goal->value;
 			$comp = $goal->comp;
 			mysql_query("INSERT INTO goals (user, name, type, description, value, comp) "
@@ -62,7 +62,7 @@ if ( isset($_GET['action'])) {
 			$goal_id = mysql_insert_id();
 			
 			for ($i = 0; $i < count($goal->motivations); ++$i) {
-				$text = $goal->motivations[$i]->text;
+				$text = mysql_real_escape_string($goal->motivations[$i]->text);
 				mysql_query("INSERT INTO motivations (goal_id, text) VALUES ($goal_id, '$text');");
 			}	
 			echo "{success:true, id=$goal_id}";		
@@ -70,16 +70,16 @@ if ( isset($_GET['action'])) {
 		} else {
 									//UPDATE AN EXISTING GOAL
 			$id = $goal->id;
-			$name = $goal->name;
+			$name = mysql_real_escape_string($goal->name);
 			$type = $goal->type;
-			$description = $goal->description;
+			$description = mysql_real_escape_string($goal->description);
 			$value = $goal->value;
 			$comp = $goal->comp;
 			mysql_query("UPDATE goals SET name='$name', type='$type', description='$description', value=$value, comp='$comp' WHERE id=$id;");
 
 			mysql_query("DELETE FROM motivations WHERE goal_id=$id;");
 			for ($i = 0; $i < count($goal->motivations); ++$i) {
-				$text = $goal->motivations[$i]->text;
+				$text = mysql_real_escape_string($goal->motivations[$i]->text);
 				mysql_query("INSERT INTO motivations (goal_id, text) VALUES ($id, '$text');");
 			}	
 			
