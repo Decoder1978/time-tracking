@@ -14,7 +14,7 @@
 			<a href="#" onclick="done()" data-role="button" data-icon="check" class="ui-btn-right">Done</a>
 
 		</header>
-		<div class="ui-bar ui-bar-d" style="text-align: center" >
+		<!--div class="ui-bar ui-bar-d" style="text-align: center" >
 				<div data-role="controlgroup" data-type="horizontal" style="text-align: center">
 					<a href="#" data-role="button" data-mini="true" data-icon="arrow-l" data-iconpos="notext" style=" height:50px; width:15%;"></a>
 					<a  data-role="button" data-mini="true" style="height:50px; width:65%;" >
@@ -22,16 +22,16 @@
 					</a>
 				<a href="#" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="notext" style=" height:50px; width:15%;"></a>	
 				</div>
-		</div>
+		</div-->
 
 		<section data-role="content">
 			
 			<aside id='message' data-theme='e'>
-				When you're done viewing progress, click 'Done' above.
+				
 			</aside>
 
-			<article id='progress' style="overflow-x: scroll;">
-				<img src="./assets/img/progress2.png" alt="weekly progress, version 2" style="width: 800px">
+			<article id="progress" style="overflow-x: scroll;">
+				<img src="./assets/img/progress2.png" alt="weekly progress, version 2" id="progress-img">
 			</article>
 			
 			</article>
@@ -41,7 +41,7 @@
 
 
 
-		<footer data-role="footer" data-position="fixed">
+		<footer data-role="footer" data-position="fixed" id="footer">
 			<p>&nbsp;</p>
 		</footer>
 	</div>
@@ -52,6 +52,11 @@
 	function done() {
 		window.location.replace('home.php?username=' + username);
 	}
+	
+	jQuery(window).load(function () {
+		$("#progress-img").css("height", ( $("#footer").offset().top - 80 ) );
+	});
+	
 
 </script>
 

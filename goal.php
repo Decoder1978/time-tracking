@@ -190,11 +190,13 @@
 	}
 	
 	function remove() {
-		$.ajax({
-            type: "GET",
-            url: "./assets/php/goals.php?action=delete&username="+username+"&id="+id
-        });
-        window.location.replace('edit.php?username=' + username);
+		if (confirm("Are you sure you want to delete this goal?")) {
+			$.ajax({
+            	type: "GET",
+           	 	url: "./assets/php/goals.php?action=delete&username="+username+"&id="+id
+            });
+        	window.location.replace('edit.php?username=' + username);
+        }
 	}
 
 </script>

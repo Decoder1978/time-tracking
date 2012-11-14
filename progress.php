@@ -14,7 +14,7 @@
 			<a href="#" onclick="done()" data-role="button" data-icon="check" class="ui-btn-right">Done</a>
 
 		</header>
-		<div class="ui-bar ui-bar-d" style="text-align: center" >
+		<!--div class="ui-bar ui-bar-d" style="text-align: center" >
 				<div data-role="controlgroup" data-type="horizontal" style="text-align: center">
 					<a href="#" data-role="button" data-mini="true" data-icon="arrow-l" data-iconpos="notext" style=" height:50px; width:15%;"></a>
 					<a  data-role="button" data-mini="true" style="height:50px; width:65%;" >
@@ -22,7 +22,7 @@
 					</a>
 				<a href="#" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="notext" style=" height:50px; width:15%;"></a>	
 				</div>
-		</div>
+		</div-->
 
 		<section data-role="content">
 			
@@ -48,18 +48,30 @@
 <script id='goal-template' type='text/x-handlebars-template'>
 	<li id="goal_progress_list" class='goal' data-role="collapsible" data-collapsed="true" data-mini="true">
 		 {{#if daily}}
-		 	<h3>
-				<div data-role='controlgroup' data-type='horizontal' class='goal-row'>
-					<h4 style="padding: 19px 0px 0px 10px; float:left;"> Actual: {{value}} days....Goal: > {{value}} days / week</h4>
-					<h4 style="padding: 10px 0px 0px 10px; float:right; font-weight: bold; font-size: 1.3em">{{name}}</h4>
-				</div>
+		 	<h3 >
+		 		<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
+		 		<h4 style="margin-top: 3px; position: absolute; left: 0px; color: #888;" >
+			 		<span>Actual: {{value}} days</span>
+			 		<br>
+			 		<span>Goal: {{comp}} {{value}} days</span>
+			 	</h4>
+			 	<h4 style="margin-top: 6px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
+			 		{{name}}
+			 	</h4>
+			 	<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
 		 	</h3>
 		 {{else}}
-		 	<h3>
-		 		<div data-role='controlgroup' data-type='horizontal' class='goal-row'>
-			 		<h4 style="padding: 19px 0px 0px 10px; float:left;" > Actual: {{value}} hrs.....Goal: < {{value}} hrs / week</h4>
-			 		<h4 style="padding: 17px 0px 0px 10px; float:right; font-weight: bold; font-size: 1.3em">{{name}}</h4>
-			 	</div>
+		 	<h3 >
+		 		<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
+		 		<h4 style="margin-top: 3px; position: absolute; left: 0px; color: #888;" >
+			 		<span>Actual: {{value}} hours</span>
+			 		<br>
+			 		<span>Goal: {{comp}} {{value}} hours</span>
+			 	</h4>
+			 	<h4 style="margin-top: 6px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
+			 		{{name}}
+			 	</h4>
+			 	<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
 		 	</h3>
 		 {{/if}}
 		 
