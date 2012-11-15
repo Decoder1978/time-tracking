@@ -1,0 +1,8 @@
+label.collapsible-checkbox-label span {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner {
+	padding-left: 0px;
+}

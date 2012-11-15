@@ -66,9 +66,10 @@
 		 {{else}}
 		 	<h3>
 		 		<div data-role='controlgroup' data-type='horizontal' class='goal-row'>
-			 		<input class="collapsible-input record-value" type="number" pattern='[0-9]*' 
-			 			style="width: 50px; float: left" value='0' 
-			 			id='value-{{id}}' data-goal-id='{{id}}' />
+			 		<input class="collapsible-input record-value" type="number"  pattern="\d*" 
+			 			step="any" min="0" style="width: 50px; float: left" value='0' 
+			 			id='value-{{id}}' data-goal-id='{{id}}' 
+			 			onchange='updateRecord($(this))' />
 			 		<h4 style="padding: 27px 0px 0px 10px; position: absolute; right: 0px; color: #888;" >
 			 			{{label}}
 			 		</h4>
@@ -80,8 +81,10 @@
 		 {{/if}}
 		{{#if daily}}
 		 		<fieldset data-role="controlgroup" id="check-item-{{id}}"  >
-			 		<label for="checkbox-{{id}}" style="width: 50px" class="collapsible-checkbox-label" data-goal-id="{{id}}">
-			 			<input type="checkbox" name="checkbox-{{id}}" id="value-{{id}}" class="collapsible-input record-value" />
+			 		<label for="checkbox-{{id}}" style="width: 50px" class="collapsible-checkbox-label" data-goal-id="{{id}}" >
+			 			<input type="checkbox" name="checkbox-{{id}}" 
+			 				id="value-{{id}}" class="collapsible-input record-value" 
+			 				 />
 			 			&nbsp;
 			 		</label>
 			 	</fieldset>
@@ -114,6 +117,10 @@
 	var records = [];
 	$("#message-container").hide();
 	
+	function format(s) {
+		return s.replace(".00","");
+	}
+	
 	//////////////////////////////////////////////////////////// AJAX CALLS TO SERVER
 	
 	function loadGoals() {
@@ -128,9 +135,9 @@
 			for (var i = 0; i < data.length; ++i) {
 				if ( data[i]['type'] == 'DAILY' ) {
 					data[i]['daily'] = true;
-					data[i]['label'] = "Goal: " + data[i]['comp'] + " " + data[i]['value'] + " days/week";
+					data[i]['label'] = "Goal: " + data[i]['comp'] + "= " + format(data[i]['value']) + " days/week";
 				} else {
-					data[i]['label'] = "Goal: " + data[i]['comp'] + " " + data[i]['value'] + " hours/week";
+					data[i]['label'] = "Goal: " + data[i]['comp'] + "= " + format(data[i]['value']) + " hours/week";
 				}
 				data[i].value = parseInt(data[i].value);
 				
@@ -141,9 +148,10 @@
 			$("#goals").trigger('create');
 			$('.collapsible-input').on("click", function(e) { e.stopPropagation(); });
 			$('.goal-row .ui-controlgroup-controls').css('width', '100%');
-			$('.record-value').on('click', function(e) { updateRecord($(this)); });
+			//$('.record-value').on('click', function(e) { updateRecord($(this)); });
 			$('.collapsible-checkbox-label').on('click', function(e) { 
 				e.stopPropagation();
+				
 				var input = $("#value-"+$(this).data('goal-id'));
 				if ( input.attr('checked') ) {
 					input.attr("checked", false).checkboxradio("refresh");
@@ -175,7 +183,7 @@
 						input.attr("checked", false).checkboxradio("refresh");
 					}
 				} else {
-					input.attr("value", recordMap[goals[i].id]);
+					input.attr("value", format(recordMap[goals[i].id]));
 					if (goals[i].type == "DAILY") {
 						input.attr("checked", true).checkboxradio("refresh");
 					}
@@ -186,6 +194,7 @@
 	}
 	
 	function updateRecord(record) {
+		console.log("UPDATE RECORD");
 		var value = $('#value-'+record.data('goal-id')).val();
 		$.ajax({
             type: "GET",
@@ -214,6 +223,7 @@
 	}
 	
 	function nextDate() {
+		//alert(date);
 		var d = new Date(date + " CST");
 		d.setDate( d.getDate() + 1);
 		var year = d.getFullYear();

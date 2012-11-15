@@ -16,7 +16,7 @@
 				<input type="text" placeholder="Username" id="username"></input>
 				<input type="password" placeholder="Password" id="password"></input>
 				<input type="button" id="login" value="Log In"></input>
-				<p>Enter a username. If the username does not exist, a new user will be created.</p>
+				<!--p>Enter a username. If the username does not exist, a new user will be created.</p-->
 		</section>
 		<footer data-role="footer" data-position="fixed">
 			<h1>

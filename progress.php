@@ -51,28 +51,186 @@
 		 	<h3 >
 		 		<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
 		 		<h4 style="margin-top: 3px; position: absolute; left: 0px; color: #888;" >
-			 		<span>Actual: {{value}} days</span>
+			 		<span>Actual: 3 days</span>
 			 		<br>
-			 		<span>Goal: {{comp}} {{value}} days</span>
+			 		<span>Goal: {{comp}}= {{value}} days</span>
 			 	</h4>
 			 	<h4 style="margin-top: 6px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
 			 		{{name}}
 			 	</h4>
 			 	<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
 		 	</h3>
+			<style><!--
+			td.border{
+				border: 1px solid #002222;
+			}
+			--></style>
+			
+			<section data-role="content" style="overflow-x: scroll;">
+				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 ALIGN=center>
+				<TR>
+				<TD class=border COLSPAN="7" ALIGN=center><B>November 2012</B></TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="25" height="25" ALIGN=center>S</TD>
+				<TD class=border width="25" height="20" ALIGN=center>M</TD>
+				<TD class=border width="25" height="20" ALIGN=center>T</TD>
+				<TD class=border width="25" height="20" ALIGN=center>W</TD>
+				<TD class=border width="25" height="20" ALIGN=center>T</TD>
+				<TD class=border width="25" height="20" ALIGN=center>F</TD>
+				<TD class=border width="25" height="20" ALIGN=center>S</TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center bgcolor="#fad2fa">28</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">29</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">30</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">31</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">1</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">2</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">3</TD>
+				<TD width="70" height="20" ALIGN=left>Needed 2days</TD>
+				</TR>
+				
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center bgcolor="#fafad2">4</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">5</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">
+					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">7</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">8</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">9</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">10</TD>
+				<TD width="70" height="20" ALIGN=left>Needed 1day</TD>
+				</TR>
+				
+				<TR>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">
+					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">12</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">
+					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">14</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">
+					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">16</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">17</TD>
+				<TD width="70" height="20" ALIGN=left>GREAT!!! 3days</TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center >18</TD>
+				<TD class=border width="20" height="20" ALIGN=center >19</TD>
+				<TD class=border width="20" height="20" ALIGN=center >20</TD>
+				<TD class=border width="20" height="20" ALIGN=center >21</TD>
+				<TD class=border width="20" height="20" ALIGN=center >22</TD>
+				<TD class=border width="20" height="20" ALIGN=center >23</TD>
+				<TD class=border width="20" height="20" ALIGN=center >24</TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center >25</TD>
+				<TD class=border width="20" height="20" ALIGN=center >26</TD>
+				<TD class=border width="20" height="20" ALIGN=center >27</TD>
+				<TD class=border width="20" height="20" ALIGN=center >28</TD>
+				<TD class=border width="20" height="20" ALIGN=center >29</TD>
+				<TD class=border width="20" height="20" ALIGN=center >30</TD>
+				<TD class=border width="20" height="20" ALIGN=center >1</TD>						
+				</TR>
+
+				</TABLE> 
+			</section>		
 		 {{else}}
 		 	<h3 >
 		 		<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
 		 		<h4 style="margin-top: 3px; position: absolute; left: 0px; color: #888;" >
-			 		<span>Actual: {{value}} hours</span>
+			 		<span>Actual: 6 hours</span>
 			 		<br>
-			 		<span>Goal: {{comp}} {{value}} hours</span>
+			 		<span>Goal: {{comp}}= {{value}} hours</span>
 			 	</h4>
 			 	<h4 style="margin-top: 6px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
 			 		{{name}}
 			 	</h4>
 			 	<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
 		 	</h3>
+			<style><!--
+			td.border{
+				border: 1px solid #002222;
+			}
+			--></style>
+			
+			<section data-role="content" style="overflow-x: scroll;">
+				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 ALIGN=center>
+				<TR>
+				<TD class=border COLSPAN="7" ALIGN=center><B>November 2012</B></TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="25" height="25" ALIGN=center>S</TD>
+				<TD class=border width="25" height="20" ALIGN=center>M</TD>
+				<TD class=border width="25" height="20" ALIGN=center>T</TD>
+				<TD class=border width="25" height="20" ALIGN=center>W</TD>
+				<TD class=border width="25" height="20" ALIGN=center>T</TD>
+				<TD class=border width="25" height="20" ALIGN=center>F</TD>
+				<TD class=border width="25" height="20" ALIGN=center>S</TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center bgcolor="#fafad2">28</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">29</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">30</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">31</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">1</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">2</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fafad2">3</TD>
+				<TD width="70" height="20" ALIGN=left>Good... 4hrs</TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center bgcolor="#d2fad2">4</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">5</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">6</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">7</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">8</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">9</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">10</TD>
+				<TD width="70" height="20" ALIGN=left>GREAT!!! 3hrs</TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center bgcolor="#fad2fa">11</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">12</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">13</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">14</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">15</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">16</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">17</TD>
+				<TD width="70" height="20" ALIGN=left>Over by... 2hrs</TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center >18</TD>
+				<TD class=border width="20" height="20" ALIGN=center >19</TD>
+				<TD class=border width="20" height="20" ALIGN=center >20</TD>
+				<TD class=border width="20" height="20" ALIGN=center >21</TD>
+				<TD class=border width="20" height="20" ALIGN=center >22</TD>
+				<TD class=border width="20" height="20" ALIGN=center >23</TD>
+				<TD class=border width="20" height="20" ALIGN=center >24</TD>
+				</TR>
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center >25</TD>
+				<TD class=border width="20" height="20" ALIGN=center >26</TD>
+				<TD class=border width="20" height="20" ALIGN=center >27</TD>
+				<TD class=border width="20" height="20" ALIGN=center >28</TD>
+				<TD class=border width="20" height="20" ALIGN=center >29</TD>
+				<TD class=border width="20" height="20" ALIGN=center >30</TD>
+				<TD class=border width="20" height="20" ALIGN=center >1</TD>						
+				</TR>
+
+				</TABLE> 
+			</section>	
 		 {{/if}}
 		 
 		<!--
@@ -82,82 +240,6 @@
 			</h1>
 		</header>
 		-->
-
-		<section data-role="content" style="overflow-x: scroll;">
-			<TABLE BORDER=10 CELLSPACING=3 CELLPADDING=3 ALIGN=center>
-			<TR>
-			<TD COLSPAN="7" ALIGN=center><B>October 2012</B></TD>
-			</TR>
-
-			<TR>
-			<TD width="30" height="20" ALIGN=center>Sun</TD>
-			<TD width="30" height="20" ALIGN=center>Mon</TD>
-			<TD width="30" height="20" ALIGN=center>Tue</TD>
-			<TD width="30" height="20" ALIGN=center>Wed</TD>
-			<TD width="30" height="20" ALIGN=center>Thu</TD>
-			<TD width="30" height="20" ALIGN=center>Fri</TD>
-			<TD width="30" height="20" ALIGN=center>Sat</TD>
-			</TR>
-
-			<TR>
-			<TD width="30" height="20" ALIGN=center></TD>
-			<TD width="30" height="20" ALIGN=center>1</TD>
-			<TD width="30" height="20" ALIGN=center>2</TD>
-			<TD width="30" height="20" ALIGN=center>3</TD>
-			<TD width="30" height="20" ALIGN=center>4</TD>
-			<TD width="30" height="20" ALIGN=center>5</TD>
-			<TD width="30" height="20" ALIGN=center>6</TD>
-			</TR>
-
-			<TR>
-			<TD width="30" height="20" ALIGN=center bgcolor="#fafad2">7</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#fafad2">8</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#fafad2">9</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#fafad2">10</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#fafad2">11</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#fafad2">12</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#fafad2">13</TD>
-			<TD width="170" height="20" ALIGN=left><=Some progress.</TD>
-			</TR>
-
-			<TR>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">14</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">15</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">16</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">17</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">18</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">19</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">20</TD>
-			<TD width="170" height="20" ALIGN=left><=Completed weekly goal!!!</TD>
-			</TR>
-
-			<TR>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">21</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">22</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">23</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">24</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">25</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">26</TD>
-			<TD width="30" height="20" ALIGN=center bgcolor="#d2fad2">27</TD>
-			<TD border="0" width="170" height="20" ALIGN=left><=Completed weekly goal!!!</TD>
-			</TR>
-
-			<TR>
-			<TD width="30" height="20" ALIGN=center>28</TD>
-			<TD width="30" height="20" ALIGN=center>29</TD>
-			<TD width="30" height="20" ALIGN=center>30</TD>
-			<TD width="30" height="20" ALIGN=center><img src="http://i1158.photobucket.com/albums/p614/RG_Minor/e1.gif" width="30" height="30" style="opacity:0.4;filter:alpha(opacity=40);" alt="GOOD JOB">31</TD>			
-			<TD width="30" height="20" ALIGN=center style="background:url(http://i1158.photobucket.com/albums/p614/RG_Minor/e1.gif)" width="30" height="30" alt="GOOD JOB">01</TD>			
-			<!--
-			<TD width="30" height="30" ALIGN=center style="background:url(http://i1158.photobucket.com/albums/p614/RG_Minor/e1.gif)">01</TD>
-			<TD width="30" height="20" ALIGN=center><img src="http://i1158.photobucket.com/albums/p614/RG_Minor/e1.gif" width="30" height="30" alt="GOOD JOB"></TD>
-			-->
-			<TD width="30" height="20" ALIGN=center><img src="http://i1158.photobucket.com/albums/p614/RG_Minor/5263079.gif" width="30" height="30" alt="GOOD JOB"></TD>
-			<TD width="30" height="20" ALIGN=center><img src="http://i1069.photobucket.com/albums/u477/mproska132/Facebook/Kew%20Gardens%203/202510_3590734417752_1516301430_o.jpg" width="30" height="30" alt="GOOD JOB"></TD>
-			</TR>
-
-			</TABLE> 
-		</section>		 
 		 
 	</li>
 </script>
