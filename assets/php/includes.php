@@ -14,8 +14,10 @@
 <script src='./assets/js/global_scripts.js'></script>
 <script>
 	<?php 
+		$username = "";
 		if (isset($_GET['username'])) {
 			echo 'var username = "'.$_GET['username'].'";'; 
+			$username = $_GET['username'];
 		} else {
 			echo 'var username = "";';
 		}
