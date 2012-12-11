@@ -41,8 +41,8 @@
 
 		<footer data-role="footer" data-position="fixed" style="text-align: center;">
 			<div data-role="controlgroup" data-type="horizontal">
-				<a href="#" 											  data-role="button" data-transition="flip" data-theme="b"	>A</a>
-				<a href="progress2.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip" 				>B</a>
+				<a href="#" 											  data-role="button" data-transition="flip" data-theme="b"  >A</a>
+				<a href="progress2.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip" rel="external"	>B</a>
 				<a href="progress3.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"				 	>C</a>
 				<a href="progress4.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"					>D</a>
 			</div>
@@ -273,7 +273,7 @@
 		//$('.checkbox').on("click", function(e) { e.stopPropagation(); });
 		$('.goal-row .ui-controlgroup-controls').css('width', '100%');
 	});
-	
+
 	function done() {
 		window.location.replace('home.php?username=' + username);
 	}

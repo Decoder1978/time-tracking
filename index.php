@@ -12,6 +12,7 @@
 				HCI556 - FL2012
 			</h1>
 		</header>
+<style>body{ background:url(time2.gif) repeat-x center top;}</style>
 		<section data-role="content">
 				<input type="text" placeholder="Username" id="username"></input>
 				<input type="password" placeholder="Password" id="password"></input>
