@@ -5,4 +5,4 @@ Mobile application for CSE556 – Human Computer Interaction Methods.
 
 Demo: http://www.donmccurdy.net/~hci/v1/
 
-v1.01
+v1.10
