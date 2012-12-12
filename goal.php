@@ -161,11 +161,36 @@
 		window.location.replace('edit.php?username=' + username);
 	}
 	
+	function checkRequired() {
+		var passed = true;
+	
+		if ($("#name").val() == "") {
+			$("#name").css("background", "#fdd");
+			passed = false;
+		} else {
+			$("#name").css("background", "");
+		}
+		
+		if ($("#value").val() == "0") {
+			$("#value").parent().find(".ui-btn-inner").css("background","#fdd");
+			passed = false;
+		} else {
+			$("#value").parent().find(".ui-btn-inner").css("background","");
+		}
+		
+		return passed;
+	}
+	
 	function save(onComplete) {
 		if (! onComplete) {
 			onComplete = function() {
 				console.log("Save submitted.");
 			}
+		}
+		
+		if ( ! checkRequired() ) {
+			alert("One or more required fields have been left blank.");
+			return null;
 		}
 	
 		var goal = {};
