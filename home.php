@@ -61,6 +61,9 @@
 			 	<h4 style="padding: 0px 0px 0px 10px; margin-top: -41px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
 			 		{{name}}
 			 	</h4>
+			 	<h4 style="position: absolute; left: 55px; top: 16px; color:#888;">
+			 			completed
+			 	</h4>
 		 	</div>
 		 	</h3>
 		 {{else}}
@@ -75,6 +78,9 @@
 			 		</h4>
 			 		<h4 style="padding: 5px 0px 0px 10px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
 			 			{{name}}
+			 		</h4>
+			 		<h4 style="position: absolute; left: 55px; top: 17px; color:#888;">
+			 			hours
 			 		</h4>
 			 	</div>
 		 	</h3>
@@ -135,9 +141,9 @@
 			for (var i = 0; i < data.length; ++i) {
 				if ( data[i]['type'] == 'DAILY' ) {
 					data[i]['daily'] = true;
-					data[i]['label'] = "Goal: " + data[i]['comp'] + "= " + format(data[i]['value']) + " days/week";
+					data[i]['label'] = ((data[i]['comp'] == '>') ? 'At least ' : 'At most ') + format(data[i]['value']) + " days/week";
 				} else {
-					data[i]['label'] = "Goal: " + data[i]['comp'] + "= " + format(data[i]['value']) + " hours/week";
+					data[i]['label'] = ((data[i]['comp'] == '>') ? 'At least ' : 'At most ') + format(data[i]['value']) + " hours/week";
 				}
 				data[i].value = parseInt(data[i].value);
 				
