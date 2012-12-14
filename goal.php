@@ -9,7 +9,13 @@
 	<div data-role="page">
 		<header data-role="header" data-position="fixed">
 			<h1>
-				Add/Edit Goal
+				<?php 
+					if (isset($_GET['id'])) {
+						echo 'Edit Goal';
+					} else {
+						echo 'Add Goal';
+					}
+				?>
 			</h1>
 			<a href="#" onclick='cancel()' data-role="button" data-icon="delete" style="float:left">Cancel</a>
 			<a href="#" onclick='done()' data-role="button" data-icon="check" style="float: right;">Done</a>
@@ -42,13 +48,21 @@
 				</select>
 			</div>
 			
+			<div class="hidden">
 			<textarea id="description" placeholder="Goal Description"></textarea>
+			</div>
 			
-			<a id='addMotivation' data-role='button' data-mini='true' data-theme='b' href='#' data-icon='add' data-iconpos="right">Motivations</a>
+			<br/>
+			<h1 style='font-weight: bold; font-size: 1.2em;' >Motivations:</h1>
+			<a id='addMotivation' data-role='button' data-mini='true' data-theme='b' href='#' data-icon='add' data-iconpos="right"
+				style="width: 100px; position: relative; top: -30px; float: right;">Add</a>
+	
 			<ul data-role="listview"  data-inset="true" id="motivations" data-theme="a" style="box-shadow:none;">
 			</ul>
 			
-			<a data-role='button' data-icon='delete' data-mini='true' onclick='remove()' href='#' id='delete' data-theme='e' >Delete</a>
+			<br><br>
+
+			<a data-role='button' data-icon='delete' data-mini='true' onclick='remove()' href='#' id='delete' data-theme='e' >Delete Goal</a>
 			
 			</form>
 		</section>

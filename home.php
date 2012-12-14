@@ -95,10 +95,12 @@
 			 		</label>
 			 	</fieldset>
 		{{/if}}
-		<h1 style='font-weight: bold; font-size: 1.2em;' >Description:</h1>
-		<ul data-role='listview' data-inset='true'>
-		<li>{{description}}</li>
-		</ul>
+		<div class="hidden">
+			<h1 style='font-weight: bold; font-size: 1.2em;' >Description:</h1>
+			<ul data-role='listview' data-inset='true'>
+			<li>{{description}}</li>
+			</ul>
+		</div>
 		<h1 style='font-weight: bold; font-size: 1.2em;' >Motivations:</h1>
 		<ul data-role='listview' data-inset='true'>
 			{{#each motivations}}
