@@ -40,7 +40,7 @@
 		</section>
 		<footer data-role="footer" class="ui-bar" data-position="fixed" style"text-align: center;">
 				<a href="progress2.php?username=<?php echo $username; ?>"  data-role="button" data-transition="flip"	
-					rel="external"  data-theme="b" style="width: 250px"	>My Current Progress</a>
+					rel="external"  data-theme="b" style="width: 200px"	>My Current Progress</a>
 				<a href="#" onclick="edit()" data-role="button" style="float: right; margin-right:20px;">Edit</a>
 		</footer>
 	</div>
@@ -60,8 +60,11 @@
 			 	<h4 style="padding: 0px 0px 0px 10px; margin-top: -41px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
 			 		{{name}}
 			 	</h4>
-			 	<h4 style="position: absolute; left: 55px; top: 16px; color:#888;">
+			 	<h4 style="position: absolute; left: 55px; top: 16px; color:#888;" id="units-{{id}}">
 			 			completed
+			 	</h4>
+			 	<h4 style="position: absolute; left: 55px; top: 16px; color:#8b8; display: none; font-weight: bold;" id="saved-{{id}}">
+			 			Saved!
 			 	</h4>
 		 	</div>
 		 	</h3>
@@ -78,9 +81,12 @@
 			 		<h4 style="padding: 5px 0px 0px 10px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
 			 			{{name}}
 			 		</h4>
-			 		<h4 style="position: absolute; left: 55px; top: 17px; color:#888;">
+			 		<h4 style="position: absolute; left: 55px; top: 17px; color:#888;" id="units-{{id}}">
 			 			hours
 			 		</h4>
+				 	<h4 style="position: absolute; left: 55px; top: 16px; color:#8b8; display: none; font-weight: bold;" id="saved-{{id}}">
+				 			Saved!
+				 	</h4>
 			 	</div>
 		 	</h3>
 		 {{/if}}
@@ -201,12 +207,17 @@
 	}
 	
 	function updateRecord(record) {
-		console.log("UPDATE RECORD");
 		var value = $('#value-'+record.data('goal-id')).val();
+		var id = record.data('goal-id');
 		$.ajax({
             type: "GET",
             url: "./assets/php/records.php?action=update&username="+username
-            	 +"&id="+record.data('goal-id')+"&value="+value+"&date="+date
+            	 +"&id="+record.data('goal-id')+"&value="+value+"&date="+date,
+            complete: function() {
+	            console.log("Updated goal " + id + ".");
+	            $("#units-"+id).fadeOut(100).delay(1500).fadeIn(200);
+	            $("#saved-"+id).delay(100).fadeIn(200).delay(1100).fadeOut(200);
+            }
         });
 	}
 	
