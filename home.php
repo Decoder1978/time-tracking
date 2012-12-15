@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8" />
-	<title>Achieving Goals to Change Behaviors - CSE556 HCI, Fall 2012</title>
+	<title>Achiev.r</title>
 	<?php require_once('./assets/php/includes.php'); ?>
 </head>
 <body>
@@ -10,7 +10,7 @@
 		<header data-role="header" data-position="fixed">
 			<a href="index.php" data-role="button" rel="external">Log Out</a>
 			<h1>
-				Goals
+				Today's Status
 			</h1>
 		</header>
 		<div class="ui-bar ui-bar-d" style="text-align: center" >
@@ -25,12 +25,8 @@
 		
 		<section data-role="content">
 			
-			<a href="#" onclick="progress()" data-role="button" data-iconpos="right"  data-icon='arrow-r' data-theme="b">
-				<span style='float:left'>This Week's Progress</span>
-				<span style='float:right'></span>
-			</a>
-			
-			<br><hr /><br>
+			<h1 style='font-weight: bold; font-size: 1.5em;' >Today's Status:</h1>
+			<br><hr/><br>
 			
 			<div id='message-container' class='ui-bar-e' style='height: 110px; width: 250px; padding: 0px 20px 0px 20px;'>
 				<h1 id='message' style="font-size: large"></h1>
@@ -39,10 +35,13 @@
 
 			</ul>
 
+			<br><hr/><br>
 
 		</section>
-		<footer data-role="footer" class="ui-bar" data-position="fixed">
-			<a href="#" onclick="edit()" data-role="button" style="float: right; margin-right:20px;">Edit</a>
+		<footer data-role="footer" class="ui-bar" data-position="fixed" style"text-align: center;">
+				<a href="progress2.php?username=<?php echo $username; ?>"  data-role="button" data-transition="flip"	
+					rel="external"  data-theme="b" style="width: 250px"	>My Current Progress</a>
+				<a href="#" onclick="edit()" data-role="button" style="float: right; margin-right:20px;">Edit</a>
 		</footer>
 	</div>
 </body>
