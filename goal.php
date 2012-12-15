@@ -60,7 +60,7 @@
 			<ul data-role="listview"  data-inset="true" id="motivations" data-theme="a" style="box-shadow:none;">
 			</ul>
 			
-			<br><br>
+			<br>
 
 			<a data-role='button' data-icon='delete' data-mini='true' onclick='remove()' href='#' id='delete' data-theme='e' >Delete Goal</a>
 			
@@ -91,21 +91,17 @@
 			for (var i = 0; i < goal['motivations'].length; ++i) {
 				goal['motivations'][i]['id'] = availableIds.pop();
 			}
+			
 			motivations = goal['motivations'];
-			listMotivations();
+			
+			if (goal['motivations'].length == 0) {
+				addMotivation();
+			} else {
+				listMotivations();
+			}
 		});
 
 	}
-	
-	<?php 
-		if (isset($_GET['id'])) {
-			echo 'var id = "'.$_GET['id'].'";'; 
-			echo 'loadGoal()';
-		} else {
-			echo 'var id = "0";';
-			echo "$('#delete').remove();";
-		}
-	?>
 	
 	function getMotivation(id) {
 		for (var i = 0; i < motivations.length; ++i) {
@@ -156,15 +152,17 @@
 		});
 	}
 	
-	
-	
-	$("#addMotivation").on("click", function() {
+	function addMotivation() {
 		if (motivations.length >= 8) {
 			alert("Maximum of 8 motivations allowed.");
 			return;
 		}
 		motivations.push({id:availableIds.pop(), text:""});
 		listMotivations();
+	}	
+	
+	$("#addMotivation").on("click", function() {
+		addMotivation();
 	});
 
 	function done() {
@@ -206,6 +204,13 @@
 			alert("One or more required fields have been left blank.");
 			return null;
 		}
+		
+		for (var i = 0; i < motivations.length; ++i) {
+			if ( motivations[i].text == "" ) {
+				motivations.splice(i, 1);
+				--i;
+			}
+		}
 	
 		var goal = {};
 		goal['id'] = id;
@@ -237,6 +242,22 @@
         	window.location.replace('edit.php?username=' + username);
         }
 	}
+	
+	<?php 
+		if (isset($_GET['id'])) {
+			echo 'var id = "'.$_GET['id'].'";'; 
+			echo 'loadGoal()';
+		} else {
+			echo 'var id = "0";';
+			echo "$('#delete').remove();";
+		}
+	?>
+	
+	$(document).ready( function() {
+		if (id == 0) {
+			addMotivation();
+		}
+	});
 
 </script>
 </html>
