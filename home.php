@@ -41,7 +41,7 @@
 		<footer data-role="footer" class="ui-bar" data-position="fixed" style"text-align: center;">
 				<a href="progress2.php?username=<?php echo $username; ?>"  data-role="button" data-transition="flip"	
 					rel="external"  data-theme="b" style="width: 200px"	>My Current Progress</a>
-				<a href="#" onclick="edit()" data-role="button" style="float: right; margin-right:20px;">Edit</a>
+				<a href="#" onclick="edit()" data-role="button" style="float: right; margin-right:20px;">Edit Goals</a>
 		</footer>
 	</div>
 </body>
@@ -107,88 +107,55 @@
 			</ul>
 		</div>
 		
+		<h1 style='font-weight: bold; font-size: 1.2em; margin-bottom: 5px; ' >This Week:</h1>
 		{{#if daily}}
-		 	<h3 >
-		 		<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
-				<h1 style='font-weight: bold; font-size: 1.2em;' >GREAT!!! Exceeded goal by 1 day!</h1>
-				<h4 style="margin-top: 3px; color: #888;" >
-				<li>Goal: At least {{value}} days per week</li>
-		 	</h3>
-			<style><!--
-			td.border{
+			<style>
+			td {
+				width: 20px; 
+				height: 20px;
 				border: 1px solid #002222;
 			}
-			--></style>
+			tr.good-week td {
+				background-color: #d2fad2;
+			}
+			tr.ok-week td {
+				background-color: #fad2fa;
+			}
+			</style>
 			
 			<section data-role="content" style="overflow-x: scroll;">
-				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 ALIGN=left>
+				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 style="text-align: center">
 
 
 				<TR>
-				<TD class=border width="20" height="25" ALIGN=center>S</TD>
-				<TD class=border width="20" height="20" ALIGN=center>M</TD>
-				<TD class=border width="20" height="20" ALIGN=center>T</TD>
-				<TD class=border width="20" height="20" ALIGN=center>W</TD>
-				<TD class=border width="20" height="20" ALIGN=center>T</TD>
-				<TD class=border width="20" height="20" ALIGN=center>F</TD>
-				<TD class=border width="20" height="20" ALIGN=center>S</TD>
-				<TD class=border width="25" height="20" ALIGN=center>Total</TD>			
+					<TD>S</TD><TD>M</TD><TD>T</TD><TD>W</TD><TD>T</TD><TD>F</TD><TD>S</TD><TD>Total</TD>			
 				</TR>
 
 				
-				<TR>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">
-					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2"></TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">
-					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2"></TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">
-					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2"></TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2"></TD>
-				<TD class=border width="50" height="20" ALIGN=center bgcolor="#d2fad2">3 days</TD>					
+				<TR class="good-week">
+				<TD><img src="assets/img/checkmark.png" alt="checkmark"></TD>
+				<TD></TD>
+				<TD><img src="assets/img/checkmark.png" alt="checkmark"></TD>
+				<TD></TD>
+				<TD><img src="assets/img/checkmark.png" alt="checkmark"></TD>
+				<TD></TD>
+				<TD></TD>
+				<TD style="width: 50px;">3 days</TD>					
 				</TR>
 
 
 				</TABLE> 
 			</section>		
-		{{else}}
-		 	<h3 >
-		 		<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
-				<h1 style='font-weight: bold; font-size: 1.2em;' >Over by 2 hours.  Try harder next week.</h1>
-				<h4 style="margin-top: 3px; color: #888;" >
-				<li>Goal: At most {{value}} hours per week</li>
-		 	</h3>
-			<style><!--
-			td.border
-				border: 1px solid #002222;
-			}
-			--></style>
-			
+		{{else}}			
 			<section data-role="content" style="overflow-x: scroll;">
-				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 ALIGN=left>
+				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 style="text-align: center">
 
 				<TR>
-				<TD class=border width="25" height="25" ALIGN=center>S</TD>
-				<TD class=border width="25" height="20" ALIGN=center>M</TD>
-				<TD class=border width="25" height="20" ALIGN=center>T</TD>
-				<TD class=border width="25" height="20" ALIGN=center>W</TD>
-				<TD class=border width="25" height="20" ALIGN=center>T</TD>
-				<TD class=border width="25" height="20" ALIGN=center>F</TD>
-				<TD class=border width="25" height="20" ALIGN=center>S</TD>
-				<TD class=border width="25" height="20" ALIGN=center>Total</TD>	
+					<TD>S</TD><TD>M</TD><TD>T</TD><TD>W</TD><TD>T</TD><TD>F</TD><TD>S</TD><TD>Total</TD>	
 				</TR>
 
-				<TR>
-				<TD class=border width="20" height="25" ALIGN=center bgcolor="#fad2fa">3</TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">1</TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">2</TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa"></TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa"></TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa"></TD>
-				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa"></TD>
-				<TD class=border width="40" height="20" ALIGN=center bgcolor="#fad2fa">6 hrs</TD>
+				<TR class="ok-week">
+					<TD>3</TD><TD>1</TD><TD>2</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD style="width: 50px;">6 hrs</TD>
 				</TR>
 
 
@@ -196,8 +163,10 @@
 			</section>	
 		{{/if}}
 		
+		<br>
+		<h1 style='font-weight: bold; font-size: 1.2em;' >Goal: <span style=" font-weight: normal;">{{label}}.</span></h1>
 		
-		
+		<br>
 		<h1 style='font-weight: bold; font-size: 1.2em;' >Motivations:</h1>
 		<ul data-role='listview' data-inset='true'>
 			{{#each motivations}}
