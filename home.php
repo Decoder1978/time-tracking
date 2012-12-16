@@ -106,6 +106,98 @@
 			<li>{{description}}</li>
 			</ul>
 		</div>
+		
+		{{#if daily}}
+		 	<h3 >
+		 		<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
+				<h1 style='font-weight: bold; font-size: 1.2em;' >GREAT!!! Exceeded goal by 1 day!</h1>
+				<h4 style="margin-top: 3px; color: #888;" >
+				<li>Goal: At least {{value}} days per week</li>
+		 	</h3>
+			<style><!--
+			td.border{
+				border: 1px solid #002222;
+			}
+			--></style>
+			
+			<section data-role="content" style="overflow-x: scroll;">
+				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 ALIGN=left>
+
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center>S</TD>
+				<TD class=border width="20" height="20" ALIGN=center>M</TD>
+				<TD class=border width="20" height="20" ALIGN=center>T</TD>
+				<TD class=border width="20" height="20" ALIGN=center>W</TD>
+				<TD class=border width="20" height="20" ALIGN=center>T</TD>
+				<TD class=border width="20" height="20" ALIGN=center>F</TD>
+				<TD class=border width="20" height="20" ALIGN=center>S</TD>
+				<TD class=border width="25" height="20" ALIGN=center>Total</TD>			
+				</TR>
+
+				
+				<TR>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">
+					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">
+					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2">
+					<img src="http://i154.photobucket.com/albums/s275/dkhieu/checkmark1.png" alt="GOOD JOB"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#d2fad2"></TD>
+				<TD class=border width="50" height="20" ALIGN=center bgcolor="#d2fad2">3 days</TD>					
+				</TR>
+
+
+				</TABLE> 
+			</section>		
+		{{else}}
+		 	<h3 >
+		 		<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
+				<h1 style='font-weight: bold; font-size: 1.2em;' >Over by 2 hours.  Try harder next week.</h1>
+				<h4 style="margin-top: 3px; color: #888;" >
+				<li>Goal: At most {{value}} hours per week</li>
+		 	</h3>
+			<style><!--
+			td.border
+				border: 1px solid #002222;
+			}
+			--></style>
+			
+			<section data-role="content" style="overflow-x: scroll;">
+				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 ALIGN=left>
+
+				<TR>
+				<TD class=border width="25" height="25" ALIGN=center>S</TD>
+				<TD class=border width="25" height="20" ALIGN=center>M</TD>
+				<TD class=border width="25" height="20" ALIGN=center>T</TD>
+				<TD class=border width="25" height="20" ALIGN=center>W</TD>
+				<TD class=border width="25" height="20" ALIGN=center>T</TD>
+				<TD class=border width="25" height="20" ALIGN=center>F</TD>
+				<TD class=border width="25" height="20" ALIGN=center>S</TD>
+				<TD class=border width="25" height="20" ALIGN=center>Total</TD>	
+				</TR>
+
+				<TR>
+				<TD class=border width="20" height="25" ALIGN=center bgcolor="#fad2fa">3</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">1</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa">2</TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa"></TD>
+				<TD class=border width="20" height="20" ALIGN=center bgcolor="#fad2fa"></TD>
+				<TD class=border width="40" height="20" ALIGN=center bgcolor="#fad2fa">6 hrs</TD>
+				</TR>
+
+
+				</TABLE> 
+			</section>	
+		{{/if}}
+		
+		
+		
 		<h1 style='font-weight: bold; font-size: 1.2em;' >Motivations:</h1>
 		<ul data-role='listview' data-inset='true'>
 			{{#each motivations}}

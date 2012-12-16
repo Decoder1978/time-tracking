@@ -43,10 +43,10 @@
 
 		<footer data-role="footer" data-position="fixed" style="text-align: center;">
 			<div data-role="controlgroup" data-type="horizontal">
-				<a href="progress.php?username=<?php echo $username; ?>"  data-role="button" data-transition="flip" rel="external"	    >A</a>
-				<a href="progress2.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip" rel="external"		>B</a>
-				<a href="progress3.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"				 		>C</a>
-				<a href="#" 											  data-role="button" data-transition="flip" data-theme="b"		>D</a>
+				<a href="progress.php?username=<?php echo $username; ?>"  data-role="button" data-transition="flip" rel="external"	    >Data</a>
+				<a href="progress2.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip" rel="external"		>Graph</a>
+				<a href="progress3.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"				 		>Tree1</a>
+				<a href="#" 											  data-role="button" data-transition="flip" data-theme="b"		>Tree2</a>
 			</div>
 		</footer>
 	</div>
