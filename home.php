@@ -4,38 +4,56 @@
 	<meta charset="UTF-8" />
 	<title>Achiev.r</title>
 	<?php require_once('./assets/php/includes.php'); ?>
+	<style>
+		.ui-header .ui-btn-icon-right .ui-icon, .ui-footer .ui-btn-icon-right .ui-icon, .ui-mini.ui-btn-icon-right .ui-icon, .ui-mini .ui-btn-icon-right .ui-icon {right: 10px;}
+		
+		table {
+			border-collapse: collapse;
+			-moz-box-shadow: 0 1px 4px rgba(0,0,0,.3);
+			-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+			box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+		}
+		table td {padding: 10px; text-align: center; border: 1px solid #CCC;}
+		table td.img {padding: 0;}
+		table tr td {width: 40px; white-space: nowrap;}
+		table tr td:last-child {width: 200px;}
+		table tr:first-child {font-weight: bold;}
+		
+		tr.good-week td {
+			background-color: #fad2fa;
+		}
+		tr.ok-week td {
+			background-color: #d2fad2;
+		}
+	</style>
 </head>
 <body>
 	<div data-role="page">
 		<header data-role="header" data-position="fixed">
 			<a href="index.php" data-role="button" rel="external">Log Out</a>
-			<h1>
-				Today's Status
-			</h1>
+			<h1>HCI Time</h1>
 		</header>
+		
 		<div class="ui-bar ui-bar-d" style="text-align: center" >
-				<div data-role="controlgroup" data-type="horizontal" style="text-align: center">
-					<a href="#" onclick="previousDate()" data-role="button" data-mini="true" data-icon="arrow-l" data-iconpos="notext" style=" height:50px; width:15%;"></a>
-					<a  data-role="button" data-mini="true" style="height:50px; width:65%;" >
-						<input class="collapsible-input" data-mini="true" type="date" value="" id="date" style="margin-top: 2px;" />
+				<div data-role="controlgroup" data-type="horizontal" style="margin-left: 0; margin-right: 0;text-align: center; min-width: 274px">
+					<a href="#" onclick="previousDate()" data-role="button" data-icon="arrow-l" data-iconpos="notext" style="padding:3px; 0;">a</a>
+					<a data-corners="false" data-mini="true" >
+						<input class="collapsible-input" type="date" value="" id="date" style="margin: 0; height: 32px; max-width: 120px" />
 					</a>
-				<a href="#" onclick="nextDate()" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="notext" style=" height:50px; width:15%;"></a>	
+					<a href="#" onclick="nextDate()" data-role="button" data-icon="arrow-r" data-iconpos="notext" style="padding:3px; 0;"></a>	
 				</div>
 		</div>
 		
 		<section data-role="content">
 			
-			<h1 style='font-weight: bold; font-size: 1.5em;' >Today's Status:</h1>
-			<br><hr/><br>
+			<h1 id="day-title" style='font-weight: bold; font-size: 1.5em;' >Status for Today</h1>
+			<br>
 			
 			<div id='message-container' class='ui-bar-e' style='height: 110px; width: 250px; padding: 0px 20px 0px 20px;'>
 				<h1 id='message' style="font-size: large"></h1>
 			</div>
-			<ul data-role="collapsible-set" data-iconpos="right"   data-collapsed-icon='arrow-r'  data-expanded-icon='arrow-d' id='goals'>
-
+			<ul data-role="collapsible-set" data-iconpos="right" data-collapsed-icon='arrow-r'  data-expanded-icon='arrow-d' id='goals'>
 			</ul>
-
-			<br><hr/><br>
 
 		</section>
 		<footer data-role="footer" class="ui-bar" data-position="fixed" style"text-align: center;">
@@ -49,44 +67,31 @@
 	<li class='goal' data-role="collapsible" data-collapsed="true" data-mini="true">
 		
 		 {{#if daily}}
-		 	<h3 >
-		 	<div  data-role='controlgroup' data-type='horizontal' class='goal-row'>	
-	 			<fieldset>
-	 		 		<div id="check-container-{{id}}" style="height:42px;"></div>		 			
-			 	</fieldset>
-		 		<h4 style="padding: 0px 0px 0px 10px; margin-top: -20px; position: absolute; right: 0px; color: #888;" >
-			 		{{label}}
-			 	</h4>
-			 	<h4 style="padding: 0px 0px 0px 10px; margin-top: -41px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
-			 		{{name}}
-			 	</h4>
-			 	<h4 style="position: absolute; left: 55px; top: 16px; color:#888;" id="units-{{id}}">
-			 			completed
-			 	</h4>
-			 	<h4 style="position: absolute; left: 55px; top: 16px; color:#8b8; display: none; font-weight: bold;" id="saved-{{id}}">
-			 			Saved!
-			 	</h4>
-		 	</div>
+		 	<h3>
+				<div data-role='controlgroup' data-type='horizontal' class='goal-row'>	
+					<div id="check-container-{{id}}" style="height:42px; float:left;"></div>
+					<div style="float:left; margin: 14px 0 0 7px; position: relative; ">
+						<em style="position:absolute; color:#888;" id="units-{{id}}">completed</em>
+						<em style="position:absolute; color:#8b8; display: none; font-weight: bold;" id="saved-{{id}}">Saved!</em>
+					</div>		 			
+					<div style="float: right; text-align: right;">
+						<h5 style="font-size: 1.3em; font-weight: bold; margin: 4px 0 5px;">{{name}}</h5>
+						<em style="color:#888;">{{label}}</em>
+					</div>
+				</div>
 		 	</h3>
 		 {{else}}
 		 	<h3>
 		 		<div data-role='controlgroup' data-type='horizontal' class='goal-row'>
-			 		<input class="collapsible-input record-value" type="number"  pattern="\d*" 
-			 			step="any" min="0" style="width: 50px; float: left" value='0' 
-			 			id='value-{{id}}' data-goal-id='{{id}}' 
-			 			onchange='updateRecord($(this))' />
-			 		<h4 style="padding: 27px 0px 0px 10px; position: absolute; right: 0px; color: #888;" >
-			 			{{label}}
-			 		</h4>
-			 		<h4 style="padding: 5px 0px 0px 10px; position:absolute; right: 0px; font-weight: bold; font-size: 1.3em;">
-			 			{{name}}
-			 		</h4>
-			 		<h4 style="position: absolute; left: 55px; top: 17px; color:#888;" id="units-{{id}}">
-			 			hours
-			 		</h4>
-				 	<h4 style="position: absolute; left: 55px; top: 16px; color:#8b8; display: none; font-weight: bold;" id="saved-{{id}}">
-				 			Saved!
-				 	</h4>
+					<input class="collapsible-input record-value" type="number"  pattern="\d*" step="any" min="0" style="width: 50px; float: left" value='0' id='value-{{id}}' data-goal-id='{{id}}' onchange='updateRecord($(this))' style="float:left;" />
+					<div style="float:left; margin: 14px 0 0 7px; position: relative">
+						<em style="position: absolute; color:#888;" id="units-{{id}}">hours</em>
+						<em style="position: absolute; color:#8b8; display: none; font-weight: bold;" id="saved-{{id}}">Saved!</em>
+					</div>
+					<div style="float: right; text-align: right;">
+						<h5 style="font-size: 1.3em; font-weight: bold; margin: 4px 0 5px;">{{name}}</h5>
+						<em style="color:#888;">{{label}}</em>
+					</div>
 			 	</div>
 		 	</h3>
 		 {{/if}}
@@ -94,7 +99,7 @@
 		 		<fieldset data-role="controlgroup" id="check-item-{{id}}"  >
 			 		<label for="checkbox-{{id}}" style="width: 50px" class="collapsible-checkbox-label" data-goal-id="{{id}}" >
 			 			<input type="checkbox" name="checkbox-{{id}}" 
-			 				id="value-{{id}}" class="collapsible-input record-value" 
+			 				id="value-{{id}}" class="collapsible-input record-value" data-goal-id="{{id}}"
 			 				 />
 			 			&nbsp;
 			 		</label>
@@ -107,64 +112,64 @@
 			</ul>
 		</div>
 		
+		<h1 style='font-weight: bold; font-size: 1.2em;' >Goal: <span style=" font-weight: normal;">{{label}}.</span></h1>
+		<br>
+		
 		<h1 style='font-weight: bold; font-size: 1.2em; margin-bottom: 5px; ' >This Week:</h1>
 		{{#if daily}}
-			<style>
-			td {
-				width: 20px; 
-				height: 20px;
-				border: 1px solid #002222;
-			}
-			tr.good-week td {
-				background-color: #d2fad2;
-			}
-			tr.ok-week td {
-				background-color: #fad2fa;
-			}
-			</style>
+	
+			<table data-role="table">
+
+				<tr>
+					<td>S</td>
+					<td>M</td>
+					<td>T</td>
+					<td>W</td>
+					<td>T</td>
+					<td>F</td>
+					<td>S</td>
+					<td>Total</td>			
+				</tr>
 			
-			<section data-role="content" style="overflow-x: scroll;">
-				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 style="text-align: center">
+				<tr class="good-week">
+					<td class="img"><img src="assets/img/checkmark.png" alt="checkmark"></td>
+					<td></td>
+					<td class="img"><img src="assets/img/checkmark.png" alt="checkmark"></td>
+					<td></td>
+					<td class="img"><img src="assets/img/checkmark.png" alt="checkmark"></td>
+					<td></td>
+					<td></td>
+					<td>3 days</td>					
+				</tr>
 
-
-				<TR>
-					<TD>S</TD><TD>M</TD><TD>T</TD><TD>W</TD><TD>T</TD><TD>F</TD><TD>S</TD><TD>Total</TD>			
-				</TR>
-
-				
-				<TR class="good-week">
-				<TD><img src="assets/img/checkmark.png" alt="checkmark"></TD>
-				<TD></TD>
-				<TD><img src="assets/img/checkmark.png" alt="checkmark"></TD>
-				<TD></TD>
-				<TD><img src="assets/img/checkmark.png" alt="checkmark"></TD>
-				<TD></TD>
-				<TD></TD>
-				<TD style="width: 50px;">3 days</TD>					
-				</TR>
-
-
-				</TABLE> 
-			</section>		
+			</table> 
 		{{else}}			
-			<section data-role="content" style="overflow-x: scroll;">
-				<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=3 style="text-align: center">
+			<table data-role="table">
 
-				<TR>
-					<TD>S</TD><TD>M</TD><TD>T</TD><TD>W</TD><TD>T</TD><TD>F</TD><TD>S</TD><TD>Total</TD>	
-				</TR>
+				<tr>
+					<td>S</td>
+					<td>M</td>
+					<td>T</td>
+					<td>W</td>
+					<td>T</td>
+					<td>F</td>
+					<td>S</td>
+					<td>Total</td>			
+				</tr>
 
-				<TR class="ok-week">
-					<TD>3</TD><TD>1</TD><TD>2</TD><TD></TD><TD></TD><TD></TD><TD></TD><TD style="width: 50px;">6 hrs</TD>
-				</TR>
+				<tr class="ok-week">
+					<td>3</td>
+					<td>1</td>
+					<td>2</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>6 hrs</td>
+				</tr>
 
-
-				</TABLE> 
-			</section>	
+			</table>	
 		{{/if}}
-		
-		<br>
-		<h1 style='font-weight: bold; font-size: 1.2em;' >Goal: <span style=" font-weight: normal;">{{label}}.</span></h1>
 		
 		<br>
 		<h1 style='font-weight: bold; font-size: 1.2em;' >Motivations:</h1>
@@ -178,10 +183,11 @@
 <script>
 	//////////////////////////////////////////////////////////// JS VARIABLES
 	<?php
-		echo "var todaysDate = '".date("Y-m-d")."';";
+		//echo "var todaysDate = '".date("Y-m-d")."';";
 		if ( ! isset($_GET['date'])) {
-			date_default_timezone_set('CST'); 
+			date_default_timezone_set('America/Tegucigalpa'); 
 			echo "var date = '".date("Y-m-d")."';";
+			echo 'var todaysDate = date;';
 		} else {
 			echo "var date = '".$_GET['date']."';";
 		}
@@ -234,6 +240,13 @@
 					input.attr("checked", true).checkboxradio("refresh");
 					input.attr("value",1);
 				}
+				updateRecord($(this)); 
+			});
+			$('.ui-checkbox input').on('change', function(e) {
+				if($(this).attr('checked'))
+					$(this).attr("value", 1);
+				else
+					$(this).attr("value", 0);
 				updateRecord($(this)); 
 			});
 			for (var i = 0; i < data.length; ++i) {
@@ -299,6 +312,16 @@
 		$("#goals").hide(200);
 		loadRecords();
 		$("#goals").show(200);
+		if(date == todaysDate)
+			$("#day-title").html("Status for Today");
+		else {
+			var d = new Date(date + " CST");
+			var year = d.getFullYear();
+			var month = ("0" + (d.getMonth()+1)).slice(-2);
+			var day = ("0" + d.getDate()).slice(-2);
+			var d = month+"/"+day+"/"+year;
+			$("#day-title").html("Status for " + d);
+		}
 	}
 	
 	function nextDate() {
@@ -325,6 +348,8 @@
 	//////////////////////////////////////////////////////////// INITIALIZATION
 	loadGoals();
 	setDate(date);
+	if(date == todaysDate)
+		$("#day-title").html("Status for Today");
 	
 	$("#date").on("change", function () {
 		setDate($(this).val());
