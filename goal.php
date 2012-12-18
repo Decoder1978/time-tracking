@@ -55,7 +55,7 @@
 			<br/>
 			<h1 style='font-weight: bold; font-size: 1.2em;' >Motivations:</h1>
 			<a id='addMotivation' data-role='button' data-mini='true' data-theme='b' href='#' data-icon='add' data-iconpos="right"
-				style="width: 100px; position: relative; top: -30px; float: right;">Add</a>
+				style="width: 70px; position: relative; top: -28px; float: left; margin-left: 100px;">Add</a>
 	
 			<ul data-role="listview"  data-inset="true" id="motivations" data-theme="a" style="box-shadow:none;">
 			</ul>
