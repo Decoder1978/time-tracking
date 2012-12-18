@@ -4,42 +4,52 @@
 	<meta charset="UTF-8" />
 	<title>Achieving Goals to Change Behaviors - CSE556 HCI, Fall 2012</title>
 	<?php require_once('./assets/php/includes.php'); ?>
+	<style>
+		table {
+			margin-top: 15px;
+			font-size: 1.4em;
+			width: 100%;
+			border-collapse: collapse;
+			-moz-box-shadow: 0 1px 4px rgba(0,0,0,.3);
+			-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+			box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+		}
+		table td {padding: 10px; text-align: center; border: 1px solid #CCC;}
+		table tr td {white-space: nowrap;}
+		table tr:first-child {font-weight: bold; background: inherit; }
+		tr.bad {background: #fbdcdb;}
+		tr {background: #dbe9b9;}
+	</style>
 </head>
 <body>
 	<div data-role="page">
 		<header data-role="header" data-position="fixed">
-			<h1>
-				Weekly Progress
-			</h1>
+			<h1>Weekly Progress</h1>
 			<a href="#" onclick="done()" data-role="button" data-icon="check" class="ui-btn-right">Done</a>
-
 		</header>
-		<!--div class="ui-bar ui-bar-d" style="text-align: center" >
-				<div data-role="controlgroup" data-type="horizontal" style="text-align: center">
-					<a href="#" data-role="button" data-mini="true" data-icon="arrow-l" data-iconpos="notext" style=" height:50px; width:15%;"></a>
-					<a  data-role="button" data-mini="true" style="height:50px; width:65%;" >
-						<input class="collapsible-input" data-mini="true" type="date" value="2012-10-21 to 2012-10-27 to " style="margin-top: 2px;" />
-					</a>
-				<a href="#" data-role="button" data-mini="true" data-icon="arrow-r" data-iconpos="notext" style=" height:50px; width:15%;"></a>	
-				</div>
-		</div-->
 
 		<section data-role="content">
-			
-			<aside id='message' data-theme='e'>
-				
-			</aside>
-
-			<article id='progress' style="overflow-x: scroll;">
-				<img src="./assets/img/progress3_init.png" alt="weekly progress, version 3" style="width: 800px">
-			</article>
-			
-			</article>
-			<p></p>
+			<img src="./assets/img/plants/6.png" alt="weekly progress, version 3" style="width: 100%">
+			<table>
+				<tbody>
+					<tr>
+						<td>Rewards</td>
+					</tr>
+					<tr>
+						<td>Won a butterfly</td>
+					</tr>
+					<tr class="bad">
+						<td>Attacked by a beaver</td>
+					</tr>
+					<tr class="bad">
+						<td>Attacked by bugs</td>
+					</tr>
+					<tr>
+						<td>Won a waterbucket</td>
+					</tr>
+				</tbody>
+			</table>
 		</section>
-		
-
-
 
 		<footer data-role="footer" data-position="fixed" style="text-align: center;">
 			<div data-role="controlgroup" data-type="horizontal">
