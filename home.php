@@ -49,11 +49,18 @@
 			<h1 id="day-title" style='font-weight: bold; font-size: 1.5em;' >Status for Today</h1>
 			<br>
 			
-			<div id='message-container' class='ui-bar-e' style='height: 110px; width: 250px; padding: 0px 20px 0px 20px;'>
+			<div id='message-container' class='ui-bar-e' style='display: none; height: 90px; width: 250px; padding: 0px 20px 0px 20px;'>
 				<h1 id='message' style="font-size: large"></h1>
 			</div>
-			<ul data-role="collapsible-set" data-iconpos="right" data-collapsed-icon='arrow-r'  data-expanded-icon='arrow-d' id='goals'>
+			<ul data-role="collapsible-set" data-iconpos="right"   data-collapsed-icon='arrow-r'  data-expanded-icon='arrow-d' id='goals'>
+
 			</ul>
+			<div id='message-container-2' class='ui-bar-e' style='position: relative; height: 70px; width: 250px; padding: 0px 20px 0px 20px; display: none;'>
+				<img src="assets/img/arrow-04.png" style="position: absolute; top: 12px; left: 28px; height: 40px;" alt="arrow" />
+				<h1 id='message-2' style="font-size: large; position: absolute; left: 90px;  width: 250px;">
+					<p>At the end of the day, record what you did for each goal.</p>
+				</h1>
+			</div>
 
 		</section>
 		<footer data-role="footer" class="ui-bar" data-position="fixed" style"text-align: center;">
@@ -195,7 +202,6 @@
 	
 	var goals = [];
 	var records = [];
-	$("#message-container").hide();
 	
 	function format(s) {
 		return s.replace(".00","");
@@ -206,7 +212,9 @@
 	function loadGoals() {
 		jQuery.getJSON('./assets/php/goals.php?action=get&username='+username, function success(data) {
 			if (data.length == 0) {
-				$("#message").html("<p>You don't have any goals!</p><p>Click '<b>Edit</b>' below to add some.</p>");
+				$("#message").html("<p>You don't have any goals!</p><p>Click '<b>Edit Goals</b>' below to add some.</p>");
+				$("#message-container").css("width", $("#message-container").parent().width()-42);
+				
 				$("#message-container").show(200);
 				return;
 			}
@@ -251,6 +259,9 @@
 			});
 			for (var i = 0; i < data.length; ++i) {
 				$("#check-item-"+data[i]['id']).appendTo("#check-container-"+data[i]['id']);
+			}
+			if (goals.length == 1) {
+				firstGoalHelp();
 			}
 		});
 	}
@@ -354,6 +365,20 @@
 	$("#date").on("change", function () {
 		setDate($(this).val());
 	});
+	
+	function firstGoalHelp() {
+		var width = $("#message-container").parent().width()-42;
+	
+		$("#message-container").css("width", width);
+		$("#message-container").css("height", 52);
+		$("#message").html("<p>Here is your new goal!</p>");
+		$("#message").css("text-align","center")
+		$("#message-container").show(200);
+		
+		$("#message-container-2").css("width", width);
+		$("#message-container-2").show(200);
+		
+	}
 	
 </script>
 </html>
