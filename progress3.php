@@ -5,20 +5,35 @@
 	<title>Achieving Goals to Change Behaviors - CSE556 HCI, Fall 2012</title>
 	<?php require_once('./assets/php/includes.php'); ?>
 	<style>
-		table {
-			margin-top: 15px;
-			font-size: 1.4em;
-			width: 100%;
-			border-collapse: collapse;
-			-moz-box-shadow: 0 1px 4px rgba(0,0,0,.3);
-			-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
-			box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+		li {
+			position: relative;
+			padding-left: 45px;
+			height: 40px;
+			min-height: 50px;
 		}
-		table td {padding: 10px; text-align: center; border: 1px solid #CCC;}
-		table tr td {white-space: nowrap;}
-		table tr:first-child {font-weight: bold; background: inherit; }
-		tr.bad {background: #fbdcdb;}
-		tr {background: #dbe9b9;}
+		li.header {
+			text-align: center;
+			background: #444;
+			color: #f0f0f0;
+			text-shadow: none;
+		}
+		li.good {
+			background: #dbe9b9;
+		}
+		li.bad {
+			background: #fbdcdb;
+		}
+		li p.details {
+			color: #666;
+			font-size: normal;
+		}
+		li img.icon {
+			position: absolute;
+			height: 38px;
+			top: 15px;
+			left: 10px;
+		}
+		
 	</style>
 </head>
 <body>
@@ -30,25 +45,31 @@
 
 		<section data-role="content" style="text-align: center;">
 			<img src="./assets/img/plants/6.png" alt="weekly progress, version 3" style="width: 60%">
-			<table>
-				<tbody>
-					<tr>
-						<td>Rewards</td>
-					</tr>
-					<tr>
-						<td>Won a butterfly</td>
-					</tr>
-					<tr class="bad">
-						<td>Attacked by a beaver</td>
-					</tr>
-					<tr class="bad">
-						<td>Attacked by bugs</td>
-					</tr>
-					<tr>
-						<td>Won a waterbucket</td>
-					</tr>
-				</tbody>
-			</table>
+			<ul data-role="listview" data-inset="true">
+				<li class="header">
+					<h2>Rewards</h2>
+				</li>
+				<li class="good">
+					<h1>Won a butterfly! (+2)</h1>
+					<p class="details">Met 'Watch less TV' three (3) weeks in a row.</p>
+					<img class="icon" src="assets/img/checkmark.png" />
+				</li>
+				<li class="bad">
+					<img class="icon" src="assets/img/beaver.png" />
+					<h1>Attacked by beaver. (-2)</h1>
+					<p class="details">Skipped "Exercise" entirely for a week.</p>
+				</li>
+				<li class="bad">
+					<img class="icon" src="assets/img/bug.png" />
+					<h1>Attacked by bugs. (-1)</h1>
+					<p class="details">Didn't Red books last week.</p>
+				</li>
+				<li class="good">
+					<img class="icon" src="assets/img/checkmark.png" />
+					<h1>Won a waterbucket! (+2)</h1>
+					<p class="details">Met all goals for one (1) week.</p>
+				</li>
+			</ul>
 		</section>
 
 		<footer data-role="footer" data-position="fixed" style="text-align: center;">
@@ -66,6 +87,8 @@
 	function done() {
 		window.location.replace('home.php?username=' + username);
 	}
+	
+	$("li").css("min-height",50)
 
 </script>
 
