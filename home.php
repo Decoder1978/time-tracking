@@ -212,7 +212,7 @@
 	function loadGoals() {
 		jQuery.getJSON('./assets/php/goals.php?action=get&username='+username, function success(data) {
 			if (data.length == 0) {
-				$("#message").html("<p>You don't have any goals!</p><p>Click '<b>Edit Goals</b>' below to add some.</p>");
+				$("#message").html("<p>Welcome! Let's set your first goal:</p><p>Click '<b>Edit Goals</b>' below.</p>");
 				$("#message-container").css("width", $("#message-container").parent().width()-42);
 				
 				$("#message-container").show(200);

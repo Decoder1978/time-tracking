@@ -166,7 +166,15 @@
 	});
 
 	function done() {
-		save(cancel);
+		if (id == 0) {
+			save(home);
+		} else {
+			save(cancel);
+		}
+	}
+
+	function home() {
+		window.location.replace('home.php?username=' + username);
 	}
 
 	function cancel() {
