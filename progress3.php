@@ -7,7 +7,7 @@
 	<style>
 		li {
 			position: relative;
-			padding-left: 45px;
+			/*padding-left: 45px;*/
 			height: 40px;
 			min-height: 50px;
 		}
@@ -28,10 +28,15 @@
 			font-size: normal;
 		}
 		li img.icon {
-			position: absolute;
 			height: 38px;
-			top: 15px;
-			left: 10px;
+		}
+		.image-holder {
+			height: 38px;
+			float: left;
+			width: 55px;
+			text-align: center;
+			margin-right: 15px;
+			padding-top: 6px;
 		}
 		
 	</style>
@@ -44,28 +49,45 @@
 		</header>
 
 		<section data-role="content" style="text-align: center;">
-			<img src="./assets/img/plants/6.png" alt="weekly progress, version 3" style="width: 60%">
+			<img src="./assets/img/plants/10.png" alt="weekly progress, version 3" style="width: 60%">
 			<ul data-role="listview" data-inset="true">
 				<li class="header">
 					<h2>Rewards</h2>
 				</li>
 				<li class="good">
+					<div class="image-holder">
+						<img class="icon" src="assets/img/rewards/butterfly1.png" />
+					</div>
 					<h1>Won a butterfly! (+2)</h1>
 					<p class="details">Met 'Watch less TV' three (3) weeks in a row.</p>
-					<img class="icon" src="assets/img/checkmark.png" />
+
 				</li>
 				<li class="bad">
-					<img class="icon" src="assets/img/beaver.png" />
+					<div class="image-holder">
+						<img class="icon" src="assets/img/rewards/beaver.png" />
+					</div>
 					<h1>Attacked by beaver. (-2)</h1>
 					<p class="details">Skipped "Exercise" entirely for a week.</p>
 				</li>
+				<li class="good">
+					<div class="image-holder">
+						<img class="icon" src="assets/img/rewards/butterfly2.png" />
+					</div>
+					<h1>Won a butterfly! (+2)</h1>
+					<p class="details">Met 'Exercise' three (3) weeks in a row.</p>
+
+				</li>
 				<li class="bad">
-					<img class="icon" src="assets/img/bug.png" />
+					<div class="image-holder">
+						<img class="icon" src="assets/img/rewards/ant.png" />
+					</div>
 					<h1>Attacked by bugs. (-1)</h1>
-					<p class="details">Didn't Red books last week.</p>
+					<p class="details">Didn't Read Books last week.</p>
 				</li>
 				<li class="good">
-					<img class="icon" src="assets/img/checkmark.png" />
+					<div class="image-holder">
+						<img class="icon" src="assets/img/rewards/bucket.png" />
+					</div>
 					<h1>Won a waterbucket! (+2)</h1>
 					<p class="details">Met all goals for one (1) week.</p>
 				</li>
