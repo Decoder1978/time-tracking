@@ -7,15 +7,14 @@
 	<style>
 		li {
 			position: relative;
-			/*padding-left: 45px;*/
-			height: 40px;
-			min-height: 50px;
+			height: 50px;
 		}
 		li.header {
 			text-align: center;
 			background: #444;
 			color: #f0f0f0;
 			text-shadow: none;
+			height: 25px;
 		}
 		li.good {
 			background: #dbe9b9;
@@ -109,8 +108,10 @@
 	function done() {
 		window.location.replace('home.php?username=' + username);
 	}
-	
-	$("li").css("min-height",50)
+	jQuery(window).load( function() {
+			$(".ui-li-heading").css("margin-top","0.3em")
+
+	})
 
 </script>
 
