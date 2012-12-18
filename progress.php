@@ -85,7 +85,7 @@
 						<td>S</td>
 						<td>Status</td>
 					</tr>
-					<tr class="inprogress">
+					<tr class="oops">
 						<td>28</td>
 						<td>29</td>
 						<td>30</td>
@@ -93,15 +93,15 @@
 						<td>1</td>
 						<td>2</td>
 						<td>3</td>
-						<td>Needed 2 days</td>
+						<td>Needed 3 days</td>
 					</tr>
-					<tr class="oops">
+					<tr class="inprogress">
 						<td>4</td>
 						<td>5</td>
 						<td class="img"><img src="assets/img/checkmark.png" alt="Good Job"></td>
 						<td>7</td>
 						<td>8</td>
-						<td>9</td>
+						<td class="img"><img src="assets/img/checkmark.png" alt="Good Job"></td>
 						<td>10</td>
 						<td>Needed 1 day</td>
 					</tr>
@@ -192,7 +192,7 @@
 						<td>15</td>
 						<td>16</td>
 						<td>17</td>
-						<td>Over by... 2 hrs</td>
+						<td>Over: 6 hrs</td>
 					</tr>
 
 					<tr>

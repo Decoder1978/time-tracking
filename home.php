@@ -31,7 +31,7 @@
 	<div data-role="page">
 		<header data-role="header" data-position="fixed">
 			<a href="index.php" data-role="button" rel="external">Log Out</a>
-			<h1>HCI Time</h1>
+			<h1>Daily Status</h1>
 		</header>
 		
 		<div class="ui-bar ui-bar-d" style="text-align: center" >
