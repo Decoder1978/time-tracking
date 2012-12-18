@@ -9,7 +9,7 @@
 	<div data-role="page">
 		<header data-role="header" data-position="fixed">
 			<h1>
-				Weekly Progress
+				Current Progress
 			</h1>
 			<a href="#" onclick="done()" data-role="button" data-icon="check" class="ui-btn-right">Done</a>
 
@@ -31,7 +31,7 @@
 			</aside>
 
 			<article id="progress" style="overflow-x: scroll;">
-				<img src="./assets/img/progress2.png" alt="weekly progress, version 2" id="progress-img">
+				<img src="./assets/img/progress-bars.png" alt="weekly progress, version 2" id="progress-img">
 			</article>
 			
 			</article>
@@ -43,10 +43,9 @@
 
 		<footer data-role="footer" data-position="fixed" id="footer" style="text-align: center;">
 			<div data-role="controlgroup" data-type="horizontal">
-				<a href="progress.php?username=<?php echo $username; ?>"  data-role="button" data-transition="flip"	rel="external"	>Data</a>
-				<a href="#" 											  data-role="button" data-transition="flip" data-theme="b"	>Graph</a>
-				<a href="progress3.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"				 	>Tree1</a>
-				<a href="progress4.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"					>Tree2</a>
+				<a href="#" 											  data-role="button" data-theme="b"	>This Week</a>
+				<a href="progress.php?username=<?php echo $username; ?>"  data-role="button" rel="external"	>This Month</a-->
+				<a href="progress3.php?username=<?php echo $username; ?>" data-role="button" rel="external"	>Rewards</a>
 			</div>
 		</footer>
 	</div>

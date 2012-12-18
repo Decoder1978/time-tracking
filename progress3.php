@@ -24,12 +24,12 @@
 <body>
 	<div data-role="page">
 		<header data-role="header" data-position="fixed">
-			<h1>Weekly Progress</h1>
+			<h1>Current Progress</h1>
 			<a href="#" onclick="done()" data-role="button" data-icon="check" class="ui-btn-right">Done</a>
 		</header>
 
-		<section data-role="content">
-			<img src="./assets/img/plants/6.png" alt="weekly progress, version 3" style="width: 100%">
+		<section data-role="content" style="text-align: center;">
+			<img src="./assets/img/plants/6.png" alt="weekly progress, version 3" style="width: 60%">
 			<table>
 				<tbody>
 					<tr>
@@ -53,10 +53,9 @@
 
 		<footer data-role="footer" data-position="fixed" style="text-align: center;">
 			<div data-role="controlgroup" data-type="horizontal">
-				<a href="progress.php?username=<?php echo $username; ?>"  data-role="button" data-transition="flip" rel="external"	>Data</a>
-				<a href="progress2.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"	rel="external"	>Graph</a>
-				<a href="#" 											  data-role="button" data-transition="flip" data-theme="b"	>Tree1</a>
-				<a href="progress4.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"					>Tree2</a>
+				<a href="progress2.php?username=<?php echo $username; ?>" data-role="button" rel="external" >This Week</a>
+				<a href="progress.php?username=<?php echo $username; ?>"  data-role="button" rel="external"	>This Month</a-->
+				<a href="#" data-theme="b"  data-role="button" rel="external"	>Rewards</a>
 			</div>
 		</footer>
 	</div>

@@ -9,7 +9,7 @@
 	<div data-role="page">
 		<header data-role="header" data-position="fixed">
 			<h1>
-				Weekly Progress
+				Current Progress
 			</h1>
 			<a href="#" onclick="done()" data-role="button" data-icon="check" class="ui-btn-right">Done</a>
 
@@ -41,10 +41,9 @@
 
 		<footer data-role="footer" data-position="fixed" style="text-align: center;">
 			<div data-role="controlgroup" data-type="horizontal">
-				<a href="#" 											  data-role="button" data-transition="flip" data-theme="b"  >Data</a>
-				<a href="progress2.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip" rel="external"	>Graph</a>
-				<a href="progress3.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"				 	>Tree1</a>
-				<a href="progress4.php?username=<?php echo $username; ?>" data-role="button" data-transition="flip"					>Tree2</a>
+				<a href="progress2.php?username=<?php echo $username; ?>"  data-role="button" rel="external"	>This Week</a>
+				<a href="#"  				data-theme="b"				  data-role="button" rel="external"	>This Month</a-->
+				<a href="progress3.php?username=<?php echo $username; ?>" data-role="button" rel="external"	>Rewards</a>
 			</div>
 		</footer>
 	</div>
