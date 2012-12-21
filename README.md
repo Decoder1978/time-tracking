@@ -1,8 +1,14 @@
-time-tracking
-=============
-
-Mobile application for CSE556 – Human Computer Interaction Methods.
+# Mobile App for CSE556 – HCI
+### Time Tracking & Setting Goals
 
 Demo: http://donmccurdy.net/projects/hci-time-tracking/
 
 v2.0
+
+* * * *
+
+Collaborators:
+- Julie Betlach
+- Matheus Camargo
+- Don McCurdy
+- Yu Wang
