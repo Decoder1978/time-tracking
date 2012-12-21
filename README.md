@@ -3,6 +3,6 @@ time-tracking
 
 Mobile application for CSE556 – Human Computer Interaction Methods.
 
-Demo: http://www.donmccurdy.net/~hci/v2/
+Demo: http://donmccurdy.net/projects/hci-time-tracking/
 
 v2.0
